@@ -14,6 +14,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
+    game_as_white = db.relationship('Game', back_populates ='user_as_white')
+    game_as_black = db.relationship('Game', back_populates ='user_as_black')
+
     @property
     def password(self):
         return self.hashed_password
