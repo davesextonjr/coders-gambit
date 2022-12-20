@@ -13,11 +13,12 @@ const NavBar = () => {
           </NavLink>
 
           <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
+            Sign In
           </NavLink>
 
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
+            Register
+
           </NavLink>
 
           <NavLink to='/users' exact={true} activeClassName='active'>
