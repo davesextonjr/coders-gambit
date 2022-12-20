@@ -1,1 +1,6 @@
-/* TODO Add site wide styles */
+body {
+    font-family: 'Noto Sans', sans-serif;
+    box-sizing: border-box;
+    margin: auto;
+    width: 100%;
+}
