@@ -8,7 +8,7 @@ export default function GamePlay(){
 
     return (
         <>
-            {pieces.whitePawn}
+            {pieces.whiteA}
         </>
 
     )
