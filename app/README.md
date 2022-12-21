@@ -1,7 +1,3 @@
-# Coder's Gambit
-
-"I'm not throwing away my shot!" Just like the protaginist in Lin-Manuel Miranda's musical Hamilton, this chess app is my attempt to demonstrate that I have the skills and determination necessary to be a meaningful part of a software development team. The goal of the this chess app, inspired by https://lichess.org/, is to demonstrate compentancy in key technologies like JavaScript, React, Python, SQLAlchamy, HTML/CSS, and more. The project also has space to both deepen my existing skills and learn new technologies as I explore career opportunities. On top of all that - Chess is fun. I look forward to making something that will be able to bring joy to those who have been on this journey with me. 
-
 ## Getting started
 1. Clone this repository (only this branch)
 
