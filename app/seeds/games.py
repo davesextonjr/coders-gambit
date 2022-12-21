@@ -10,3 +10,23 @@ def seed_games():
     game_two = Game(
         white_id=1, black_id=3, moves="1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. g3 O-O 5. Bg2 d5 6. a3 Bxc3+ 7. bxc3 dxc4 8. Nf3 c5 9. O-O cxd4 10. Qxd4 Nc6 11. Qxc4 e5 12. Bg5 h6 13. Rfd1 Be6 14. Rxd8 Bxc4 15. Rxa8 Rxa8 16. Bxf6 gxf6 17. Kf1 Rd8 18. Ke1 Na5 19. Rd1 Rc8 20. Nd2 Be6 21. c4 Bxc4 22. Nxc4 Rxc4 23. Rd8+ Kg7 24. Bd5 Rc7 25. Ra8 a6 26. Rb8 f5 27. Re8 e4 28. g4 Rc5 29. Ba2 Nc4 30. a4 Nd6 31. Re7 fxg4 32. Rd7 e3 33. fxe3 Ne4 34. Kf1 Rc1+ 35. Kg2 Rc2 36. Bxf7 Rxe2+ 37. Kg1 Re1+ 38. Kg2 Re2+ 39. Kg1 Kf6 40. Bd5 Rd2 41. Rf7+ Kg6 42. Rd7 Ng5 43. Bf7+ Kf5 44. Rxd2 Nf3+ 45. Kg2 Nxd2 46. a5 Ke5 47. Kg3 Nf1+ 48. Kf2 Nxh2 49. e4 Kxe4 50. Be6 Kf4 51. Bc8 Nf3 52. Bxb7 Ne5 53. Bxa6 Nc6 54. Bb7 Nxa5 55. Bd5 h5 56. Bf7 h4 57. Bd5 Ke5 0-1"
     )
+
+    db.session.add(game_one)
+    db.session.add(game_two)
+    db.session.commit()
+
+# Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
+# have a built in function to do this. With postgres in production TRUNCATE
+# removes all the data from the table, and RESET IDENTITY resets the auto
+# incrementing primary key, CASCADE deletes any dependent entities.  With
+# sqlite3 in development you need to instead use DELETE to remove all data and
+# it will reset the primary keys for you as well.
+
+
+def undo_games():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.games RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM games")
+
+    db.session.commit()

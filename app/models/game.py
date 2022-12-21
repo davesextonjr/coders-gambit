@@ -18,8 +18,10 @@ class Game(db.Model):
     black_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     moves = db.Column(db.String(5000))
 
-    user_as_white = db.relationship('User', back_populates ='game_as_white')
-    user_as_black = db.relationship('User', back_populates ='game_as_black')
+
+
+    user_as_white = db.relationship('User', foreign_keys=white_id, back_populates='game_as_white')
+    user_as_black = db.relationship('User', foreign_keys=black_id,  back_populates='game_as_black')
 
     def to_dict(self):
         return {
