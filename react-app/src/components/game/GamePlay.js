@@ -1,8 +1,14 @@
-import React from "react";
-import '.game.css'
+import React, { useState } from "react";
+import { pieces } from "./definitions/pieces";
+import './game.css'
+
 
 export default function GamePlay(){
+    // const [gameState, setGameState] =
+
     return (
-        <h1>GamePlay</h1>
+        <div>
+            {pieces.white_pawn}
+        </div>
     )
 }
