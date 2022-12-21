@@ -7,8 +7,9 @@ export default function GamePlay(){
     // const [gameState, setGameState] =
 
     return (
-        <div>
-            {pieces.white_pawn}
-        </div>
+        <>
+            {pieces.whitePawn}
+        </>
+
     )
 }

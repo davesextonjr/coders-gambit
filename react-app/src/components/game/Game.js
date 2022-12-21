@@ -6,7 +6,6 @@ export default function Game(){
     return(
         <>
             <GameBoard />
-            <GamePlay />
         </>
     )
 }

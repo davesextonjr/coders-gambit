@@ -1,5 +1,6 @@
 import React from "react";
 
+import GamePlay from "./GamePlay";
 import './game.css'
 
 export default function GameBoard() {
@@ -13,16 +14,19 @@ export default function GameBoard() {
         }
     }
 
+
+
     return (
         <div className="background">
             <div>{chessboard.join(", ")}</div>
             <div className="chessboard">
                 {chessboard.map((square) => {
                        return(
-                       <div id={square} key={square} className='squares'>{square}</div>
+                       <div id={square} key={square} className={`squares ${square}`}>{square}</div>
                        )
                 })
                 }
+                <GamePlay />
             </div>
         </div>
     )
