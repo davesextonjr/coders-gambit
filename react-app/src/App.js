@@ -7,7 +7,7 @@ import NavBar from './components/NavBar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import GameBoard from './components/game/Game';
+import Game from './components/game/Game';
 import { authenticate } from './store/session';
 
 function App() {
@@ -45,7 +45,7 @@ function App() {
           <h1>My Home Page</h1>
         </Route>
         <ProtectedRoute path='/game/:id'>
-          <GameBoard />
+          <Game />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
