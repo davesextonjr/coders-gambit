@@ -4,3 +4,5 @@ How to note chess games: https://en.wikipedia.org/wiki/Algebraic_notation_(chess
 
 
 Lots of historic chess games are stored at chessgames.com
+
+chess pieces: By Cburnett - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499806
