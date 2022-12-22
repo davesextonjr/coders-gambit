@@ -13,7 +13,7 @@ export default function GamePlay(){
     const gameState = []
     for (const square in openingPosition){
         if(openingPosition[square]){
-            gameState.push(<div key={square} id={square} className={square} onClick={clickHandler}>
+            gameState.push(<div key={square} id={square} className={square}>
                 {openingPosition[square]}
             </div>)
         }
