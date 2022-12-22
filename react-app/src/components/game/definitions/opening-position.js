@@ -1,7 +1,7 @@
 import { pieces } from "./pieces"
 
 export const openingPosition = {
-    a8: pieces.blackRook,
+    a8: pieces.blackQueenRook,
     b8: pieces.blackQueenKnight,
     c8: pieces.blackQueenBishop,
     d8: pieces.blackQueen,

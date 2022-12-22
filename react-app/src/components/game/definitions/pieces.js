@@ -8,7 +8,7 @@ export const pieces = {
     whiteE: <img src="/default-pieces/white-pawn.png" alt="white pawn"/>,
     whiteF: <img src="/default-pieces/white-pawn.png" alt="white pawn"/>,
     whiteG: <img src="/default-pieces/white-pawn.png" alt="white pawn"/>,
-    whiteH: <img src="/default-pieces/white-rook.png" alt="white rook"/>,
+    whiteH: <img src="/default-pieces/white-pawn.png" alt="white pawn"/>,
 
 
     whiteKingKnight: <img src="/default-pieces/white-knight.png" alt="white knight"/>,
