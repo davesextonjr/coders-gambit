@@ -1,5 +1,7 @@
 import "../game.css"
 
+//TODO: REFACTOR TO DO THIS PROGRMATICALLY
+
 export const pieces = {
     whiteA: <img src="/default-pieces/white-pawn.png" alt="white pawn" draggable={true}/>,
     whiteB: <img src="/default-pieces/white-pawn.png" alt="white pawn" draggable={true}/>,

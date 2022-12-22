@@ -16,7 +16,7 @@ import { openingPosition } from "../components/game/definitions/opening-position
 const initialState = {gameBoard: {0: openingPosition}, whiteUser:null, blackUser:null, moves:[]}
 
 //Reducer
-export default function (state = initialState, action){
+export default function currentGameReducer(state = initialState, action){
     switch(action.type){
         default: return state
     }

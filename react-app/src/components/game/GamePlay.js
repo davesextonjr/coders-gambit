@@ -5,7 +5,8 @@ import './game.css'
 
 export default function GamePlay(){
     // const [gameState, setGameState] =
-    const clickHandler = (e) => {
+    const dropHandler = (e) => {
+        e.preventDefault()
         e.stopPropagation()
         console.log(e.target)
     }
@@ -13,7 +14,7 @@ export default function GamePlay(){
     const gameState = []
     for (const square in openingPosition){
         if(openingPosition[square]){
-            gameState.push(<div key={square} id={square} className={square}>
+            gameState.push(<div key={square} id={square} className={square} onDrop={dropHandler}>
                 {openingPosition[square]}
             </div>)
         }
