@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { openingPosition } from "./definitions/opening-position";
+import { pieces } from "./definitions/pieces";
 import './game.css'
 
 
@@ -13,10 +14,9 @@ export default function GamePlay(){
 
     const gameState = []
     for (const square in openingPosition){
-        if(openingPosition[square]){
-            gameState.push(<div key={square} id={square} className={square} onDrop={dropHandler}>
-                {openingPosition[square]}
-            </div>)
+        const piece = openingPosition[square]
+        if(piece){
+            gameState.push(<img src={pieces[piece].image} key={square} id={square} className={square} draggable={true}/>)
         }
     }
     return (
