@@ -42,14 +42,7 @@
     background-color: darkgoldenrod;
 }
 
-/* .white-pawn{
 
-    grid-area: d2;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-} */
 
 .chessboard img{
     object-fit: contain;
