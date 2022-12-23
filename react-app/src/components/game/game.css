@@ -14,14 +14,14 @@
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 1fr);
     grid-template-areas:
-    "a8 b8 c8 d8 e8 f8 g8 h8"
-    "a7 b7 c7 d7 e7 f7 g7 h7"
-    "a6 b6 c6 d6 e6 f6 g6 h6"
-    "a5 b5 c5 d5 e5 f5 g5 h5"
-    "a4 b4 c4 d4 e4 f4 g4 h4"
-    "a3 b3 c3 d3 e3 f3 g3 h3"
-    "a2 b2 c2 d2 e2 f2 g2 h2"
-    "a1 b1 c1 d1 e1 f1 g1 h1";
+    "a8 b8 c8 d8 sqe8 f8 g8 h8"
+    "a7 b7 c7 d7 sqe7 f7 g7 h7"
+    "a6 b6 c6 d6 sqe6 f6 g6 h6"
+    "a5 b5 c5 d5 sqe5 f5 g5 h5"
+    "a4 b4 c4 d4 sqe4 f4 g4 h4"
+    "a3 b3 c3 d3 sqe3 f3 g3 h3"
+    "a2 b2 c2 d2 sqe2 f2 g2 h2"
+    "a1 b1 c1 d1 sqe1 f1 g1 h1";
 }
 
 .squares{
@@ -66,7 +66,7 @@
     grid-area: d1;
 }
 .e1 {
-    grid-area: e1;
+    grid-area: sqe1;
 }
 .f1 {
     grid-area: f1;
@@ -90,7 +90,7 @@
     grid-area: d2;
 }
 .e2 {
-    grid-area: e2;
+    grid-area: sqe2;
 }
 .f2 {
     grid-area: f2;
@@ -114,7 +114,7 @@
     grid-area: d3;
 }
 .e3 {
-    grid-area: e3;
+    grid-area: sqe3;
 }
 .f3 {
     grid-area: f3;
@@ -138,7 +138,7 @@
     grid-area: d4;
 }
 .e4 {
-    grid-area: e4;
+    grid-area: sqe4;
 }
 .f4 {
     grid-area: f4;
@@ -162,7 +162,7 @@
     grid-area: d5;
 }
 .e5 {
-    grid-area: e5;
+    grid-area: sqe5;
 }
 .f5 {
     grid-area: f5;
@@ -186,7 +186,7 @@
     grid-area: d6;
 }
 .e6 {
-    grid-area: e6;
+    grid-area: sqe6;
 }
 .f6 {
     grid-area: f6;
@@ -210,7 +210,7 @@
     grid-area: d7;
 }
 .e7 {
-    grid-area: e7;
+    grid-area: sqe7;
 }
 .f7 {
     grid-area: f7;
@@ -234,7 +234,7 @@
     grid-area: d8;
 }
 .e8 {
-    grid-area: e8;
+    grid-area: sqe8;
 }
 .f8 {
     grid-area: f8;
