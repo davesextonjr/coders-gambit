@@ -11,7 +11,7 @@ export default function GameBoard() {
 
     const dispatch = useDispatch()
     const start = useSelector(state => state.move)
-    const currentPosition = useSelector(state => state.currentGame.positions)
+    const currentPosition = useSelector(state => state.currentGame.position)
     const dropHandler = (e) => {
         e.preventDefault()
         e.stopPropagation()
@@ -19,9 +19,14 @@ export default function GameBoard() {
         // console.log("start in drop", start.startPosition, start.pieceName)
         // console.log(e.target.id)
         // console.log(currentPosition)
-        // const newPosition = {...currentPosition}
+        const newPosition = {...currentPosition}
+        if (start.startPosition && start.pieceName && e.target.id){
+            newPosition[start.startPosition] = null
+            newPosition[e.target.id] = start.pieceName
+        }
+        console.log(newPosition)
 
-        // dispatch(addPosition())
+        dispatch(addPosition(newPosition))
 
     }
 

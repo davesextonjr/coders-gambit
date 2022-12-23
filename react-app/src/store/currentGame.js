@@ -16,14 +16,14 @@ export const addPosition = position => ({
 
 
 //Initial State Definition
-const initialState = {positions: {0: openingPosition}, whiteUser:null, blackUser:null, moves:[]}
+const initialState = {position: openingPosition, whiteUser:null, blackUser:null, moves:[]}
 
 //Reducer
 export default function currentGameReducer(state = initialState, action){
     switch(action.type){
         case ADD_POSITION:{
             const newState = {...state}
-            newState.positions = {...state.positions, ...action.position}
+            newState.position = {...state.position, ...action.position}
             return newState
         }
         default: return state

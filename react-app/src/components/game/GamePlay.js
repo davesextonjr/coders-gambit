@@ -3,7 +3,7 @@ import { openingPosition } from "./definitions/opening-position";
 import { pieces } from "./definitions/pieces";
 import { setPiece, setStart } from "../../store/move";
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import './game.css'
 
@@ -11,6 +11,8 @@ import './game.css'
 export default function GamePlay(){
     //  const [takeOff, setTakeOff] = useState("")
     const dispatch = useDispatch()
+    const currentPosition = useSelector(state => state.currentGame.position)
+    // console.log(currentPosition)
 
         const dragStartHandler = (e) => {
         e.stopPropagation()
@@ -20,8 +22,8 @@ export default function GamePlay(){
     }
 
     const gameState = []
-    for (const square in openingPosition){
-        const piece = openingPosition[square]
+    for (const square in currentPosition){
+        const piece = currentPosition[square]
         if(piece){
             gameState.push(<img src={pieces[piece].image} key={square} name={piece} id={square} className={square} draggable={true} onDragStart={dragStartHandler}/>)
         }
