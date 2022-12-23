@@ -2,9 +2,10 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import currentGame from './currentGame';
+import move from './move';
 
 const rootReducer = combineReducers({
-  session, currentGame
+  session, currentGame, move
 });
 
 
