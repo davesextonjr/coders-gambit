@@ -22,8 +22,10 @@ export default function GamePlay(){
     }
 
     const gameState = []
+    let currentPositionString =""
     for (const square in currentPosition){
         const piece = currentPosition[square]
+        currentPositionString += `${square}:${piece},`
         if(piece){
             gameState.push(<img src={pieces[piece].image} key={square} name={piece} id={square} className={square} draggable={true} onDragStart={dragStartHandler}/>)
         }
