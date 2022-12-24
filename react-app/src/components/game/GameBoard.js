@@ -43,7 +43,7 @@ export default function GameBoard() {
 
     return (
         <div className="background">
-            <div>{chessboard.join(", ")}</div>
+            {/* <div>{chessboard.join(", ")}</div> */}
             <div className="chessboard">
                 {chessboard.map((square) => {
                     return (

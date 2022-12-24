@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Game from './components/game/Game';
+import NewGame from './components/main-page/NewGame';
 import { authenticate } from './store/session';
 
 function App() {
@@ -42,7 +43,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <NewGame />
         </Route>
         <ProtectedRoute path='/game/:id'>
           <Game />

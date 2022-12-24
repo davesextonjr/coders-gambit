@@ -18,14 +18,13 @@ export default function GamePlay(){
         e.stopPropagation()
         dispatch(setStart(e.target.id))
         dispatch(setPiece(e.target.name))
-        // console.log(e.target.id, e.target.name)
+        console.log(e.target.id, e.target.name)
     }
 
     const gameState = []
-    let currentPositionString =""
-    for (const square in currentPosition){
+    // "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
+    for (let char of currentPosition){
         const piece = currentPosition[square]
-        currentPositionString += `${square}:${piece},`
         if(piece){
             gameState.push(<img src={pieces[piece].image} key={square} name={piece} id={square} className={square} draggable={true} onDragStart={dragStartHandler}/>)
         }
