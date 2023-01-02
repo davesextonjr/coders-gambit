@@ -23,12 +23,12 @@ export default function GamePlay(){
 
     const gameState = []
     // "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
-    for (let char of currentPosition){
-        const piece = currentPosition[square]
-        if(piece){
-            gameState.push(<img src={pieces[piece].image} key={square} name={piece} id={square} className={square} draggable={true} onDragStart={dragStartHandler}/>)
-        }
-    }
+    // for (let char of currentPosition){
+    //     const piece = currentPosition[square]
+    //     if(piece){
+    //         gameState.push(<img src={pieces[piece].image} key={square} name={piece} id={square} className={square} draggable={true} onDragStart={dragStartHandler}/>)
+    //     }
+    // }
 
 
     return (
