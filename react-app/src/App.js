@@ -8,7 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Game from './components/game/Game';
-import NewGame from './components/main-page/NewGame';
+import MainPage from './components/main-page/MainPage';
 import { authenticate } from './store/session';
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          <NewGame />
+          <MainPage />
         </Route>
         <ProtectedRoute path='/game/:id'>
           <Game />

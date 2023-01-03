@@ -25,12 +25,12 @@ export default function NewGame(){
     }
 
     return(
-        <div className="add-game-container">
-
+        <>
             <div className="start-new-game" onClick={clickHandler}>
                 Start a New Game
             </div>
+        </>
 
-        </div>
+
     )
 }
