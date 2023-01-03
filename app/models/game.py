@@ -17,6 +17,7 @@ class Game(db.Model):
     white_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     black_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     moves = db.Column(db.String(5000))
+    current_board_state = db.Column(db.String(5000))
 
 
 
@@ -28,5 +29,6 @@ class Game(db.Model):
             'id': self.id,
             'white_id': self.white_id,
             'black_id': self.black_id,
-            'moves': self.moves
+            'moves': self.moves,
+            'current_board_state': self.current_board_state
         }
