@@ -59,7 +59,10 @@ export const updateGame = game => async (dispatch) => {
 
     if (response.ok){
         const game = await response.json()
-        console.log(JSON.parse(game.current_board_state), JSON.parse(game.moves))
+        // console.log(JSON.parse(game.current_board_state), JSON.parse(game.moves))
+        const position = JSON.parse(game.current_board_state)
+        const moves = JSON.parse(game.moves)
+        dispatch(addPosition(position, moves))
         return game
     }
     const error = await response.json()

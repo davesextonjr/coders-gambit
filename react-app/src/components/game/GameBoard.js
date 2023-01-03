@@ -21,11 +21,11 @@ export default function GameBoard() {
         // console.log(e.target.id)
         // console.log(currentPosition)
         const newPosition = {...currentPosition}
-        const newMoves = []
+        // const newMoves = []
         if (start.startPosition && start.pieceName && e.target.id){
             newPosition[start.startPosition] = null
             newPosition[e.target.id] = start.pieceName
-            newMoves.push(`${start.startPosition}-${e.target.id}`)
+            // newMoves.push(`${start.startPosition}-${e.target.id}`)
         }
         // let arr = Object.entries(newPosition)
         //console.log(Object.fromEntries(arr))
@@ -35,12 +35,12 @@ export default function GameBoard() {
             white_id: currentGame.whiteUser,
             black_id: currentGame.blackUser,
             moves: JSON.stringify([...currentGame.moves, `${start.startPosition}-${e.target.id}`]),
-            current_board_state: JSON.stringify(currentGame.position)
+            current_board_state: JSON.stringify(newPosition)
         }
 
         console.log("update game info",game)
         dispatch(updateGame(game))
-        dispatch(addPosition(newPosition, newMoves))
+
 
     }
 
