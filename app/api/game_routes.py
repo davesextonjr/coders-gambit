@@ -26,6 +26,7 @@ def get_users_games():
 
     return {'user': user, 'user_white_games': user_white_games, 'user_black_games': user_black_games}
 
+
 @game_routes.route('/<id>')
 def get_game_by_id(id):
     '''
