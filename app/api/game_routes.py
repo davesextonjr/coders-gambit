@@ -1,5 +1,6 @@
 from flask import Blueprint, json, request, session, jsonify
 from flask_login import login_required
+from sqlalchemy import select
 from ..forms import NewGameForm, UpdateGameForm
 from ..models import Game, db, User
 from .auth_routes import validation_errors_to_error_messages
@@ -25,6 +26,15 @@ def get_users_games():
 
     return {'user': user, 'user_white_games': user_white_games, 'user_black_games': user_black_games}
 
+@game_routes.route('/<id>')
+def get_game_by_id(id):
+    '''
+    Qerry for a specific game
+    '''
+    game = Game.query.get(id)
+    return game.to_dict()
+
+
 @game_routes.route('/new', methods=['POST'])
 def create_new_game():
     """
@@ -36,7 +46,8 @@ def create_new_game():
         game = Game(
             white_id=form.data['white_id'],
             black_id=form.data['black_id'],
-            moves=""
+            moves=form.data['moves'],
+            current_board_state=form.data['current_board_state']
         )
         db.session.add(game)
         db.session.commit()
