@@ -12,7 +12,7 @@ export default function GamePlay(){
     //  const [takeOff, setTakeOff] = useState("")
     const dispatch = useDispatch()
     const currentPosition = useSelector(state => state.currentGame.position)
-    // console.log(currentPosition)
+
 
         const dragStartHandler = (e) => {
         e.stopPropagation()

@@ -4,7 +4,7 @@ import GamePlay from "./GamePlay";
 import { dragOverHandler } from "./helper-functions/DragAndDrop";
 import './game.css'
 import { setEnd } from "../../store/move";
-import { addPosition } from "../../store/currentGame";
+import { addPosition, updateGame } from "../../store/currentGame";
 import { openingPosition } from "./definitions/opening-position";
 
 export default function GameBoard() {
@@ -12,6 +12,7 @@ export default function GameBoard() {
     const dispatch = useDispatch()
     const start = useSelector(state => state.move)
     const currentPosition = useSelector(state => state.currentGame.position)
+    const currentGame = useSelector(state => state.currentGame)
     const dropHandler = (e) => {
         e.preventDefault()
         e.stopPropagation()
@@ -20,13 +21,26 @@ export default function GameBoard() {
         // console.log(e.target.id)
         // console.log(currentPosition)
         const newPosition = {...currentPosition}
+        // const newMoves = []
         if (start.startPosition && start.pieceName && e.target.id){
             newPosition[start.startPosition] = null
             newPosition[e.target.id] = start.pieceName
+            // newMoves.push(`${start.startPosition}-${e.target.id}`)
         }
-        console.log(newPosition)
+        // let arr = Object.entries(newPosition)
+        //console.log(Object.fromEntries(arr))
+        // console.log(arr.join(" "))
+        const game = {
+            id: currentGame.gameId,
+            white_id: currentGame.whiteUser,
+            black_id: currentGame.blackUser,
+            moves: JSON.stringify([...currentGame.moves, `${start.startPosition}-${e.target.id}`]),
+            current_board_state: JSON.stringify(newPosition)
+        }
 
-        dispatch(addPosition(newPosition))
+        console.log("update game info",game)
+        dispatch(updateGame(game))
+
 
     }
 
