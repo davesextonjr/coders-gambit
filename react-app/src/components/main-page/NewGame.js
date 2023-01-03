@@ -12,7 +12,7 @@ export default function NewGame(){
 
 
         const newGame = await dispatch(startNewGame({white_id: currentUser.id, black_id: currentUser.id}))
-        console.log(newGame)
+        console.log( "the new Game", newGame)
         if (newGame.id){
             history.push(`/game/${newGame.id}`)
         }

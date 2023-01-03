@@ -22,7 +22,7 @@ export const addPosition = (position, moves) => ({
 //Thunks(Middleware)
 export const startNewGame = (game) => async (dispatch) => {
     console.log(game)
-    const response = await fetch('api/game/new', {
+    const response = await fetch('/api/game/new', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -42,6 +42,30 @@ export const startNewGame = (game) => async (dispatch) => {
     return error
 }
 
+export const updateGame = game => async (dispatch) => {
+    const response = await fetch('/api/game/update',{
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: game.id,
+            white_id: game.white_id,
+            black_id: game.black_id,
+            moves: game.moves,
+            current_board_state: game.current_board_state
+        })
+    })
+
+    if (response.ok){
+        const game = await response.json()
+        console.log(JSON.parse(game.current_board_state), JSON.parse(game.moves))
+        return game
+    }
+    const error = await response.json()
+    return error
+}
+
 
 
 
@@ -53,7 +77,7 @@ const initialState = {position: openingPosition, whiteUser:null, blackUser:null,
 export default function currentGameReducer(state = initialState, action){
     switch(action.type){
         case CREATE_GAME:{
-            const newState = {...state, gameId: action.game.id, position: openingPosition, whiteUser:action.game.white_user, blackUser: action.game.black_user}
+            const newState = {...state, gameId: action.game.id, position: openingPosition, whiteUser:action.game.white_id, blackUser: action.game.black_id}
             return newState
         }
         case ADD_POSITION:{

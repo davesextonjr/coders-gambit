@@ -52,6 +52,11 @@ def update_game():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
        edited_game = json.loads(request.data.decode('UTF-8'))
-       print(edited_game)
+       game = Game.query.get(edited_game['id'])
+       game.moves = edited_game['moves']
+       game.current_board_state = edited_game['current_board_state']
+       db.session.commit()
+       saved_game = game.to_dict()
+       return saved_game
 
     return {'errors': validation_errors_to_error_messages}
