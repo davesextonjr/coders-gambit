@@ -1,6 +1,6 @@
-from flask import Blueprint, json, request
+from flask import Blueprint, json, request, session, jsonify
 from flask_login import login_required
-from ..forms import NewGameForm
+from ..forms import NewGameForm, UpdateGameForm
 from ..models import Game, db, User
 from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required, current_user
@@ -41,4 +41,17 @@ def create_new_game():
         db.session.add(game)
         db.session.commit()
         return game.to_dict()
+    return {'errors': validation_errors_to_error_messages}
+
+@game_routes.route('/update', methods=['PUT'])
+def update_game():
+    """
+    Updates the Game
+    """
+    form = UpdateGameForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+       edited_game = json.loads(request.data.decode('UTF-8'))
+       print(edited_game)
+
     return {'errors': validation_errors_to_error_messages}
