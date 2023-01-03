@@ -1,4 +1,4 @@
-import { openingPosition } from "../components/game/definitions/opening-position";
+// import { openingPosition } from "../components/game/definitions/opening-position";
 //Definitions
 const CREATE_GAME = '/current_game/CREATE_GAME'
 
@@ -74,13 +74,13 @@ export const updateGame = game => async (dispatch) => {
 
 
 //Initial State Definition
-const initialState = {position: openingPosition, whiteUser:null, blackUser:null, moves:[]}
+const initialState = {position: {}, whiteUser:null, blackUser:null, moves:[]}
 
 //Reducer
 export default function currentGameReducer(state = initialState, action){
     switch(action.type){
         case CREATE_GAME:{
-            const newState = {...state, gameId: action.game.id, position: openingPosition, whiteUser:action.game.white_id, blackUser: action.game.black_id}
+            const newState = {...state, gameId: action.game.id, position: action.game.current_board_state, whiteUser:action.game.white_id, blackUser: action.game.black_id}
             return newState
         }
         case ADD_POSITION:{
