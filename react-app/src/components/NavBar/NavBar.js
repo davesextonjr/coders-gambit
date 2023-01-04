@@ -4,9 +4,11 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
 import ProfileButton from './ProfileButton';
 import './NavBar.css'
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
-  const theme = "dark"
+  const theme = useSelector(state => state.theme.background)
+
   return (
     <nav data-board={theme}>
 

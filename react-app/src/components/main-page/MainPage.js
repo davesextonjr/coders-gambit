@@ -2,9 +2,11 @@ import React from "react";
 import NewGame from "./NewGame";
 import UserGames from "./UserGames";
 import "./mainPage.css"
+import { useSelector } from "react-redux";
 
 export default function MainPage(){
-    let theme = "dark"
+
+    const theme = useSelector(state => state.theme.background)
 
     return (
         <div className="main-page" data-board={theme}>

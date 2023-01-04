@@ -1,5 +1,5 @@
 .background {
-    background-color: black;
+    background-color: var(--background);
     height: 100%;
     border: black solid 1px;
 }
