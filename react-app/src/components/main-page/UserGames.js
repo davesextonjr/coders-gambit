@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { loadUserGames } from "../../store/userGames";
 import chessboardCreator from "../game/definitions/chessboard";
 import positionPlacer from "../game/definitions/postitionplacer";
@@ -8,7 +9,7 @@ export default function UserGames() {
     const dispatch = useDispatch()
     const [user, setUser] = useState(null)
     const [loaded, setLoaded] = useState(false)
-    // console.log(user)
+    const history = useHistory()
     useEffect(() => {
         dispatch(loadUserGames()).then(user => setUser(user)).then(() =>
             setLoaded(true)
@@ -31,6 +32,7 @@ export default function UserGames() {
                 id={square}
                 key={square}
                 className={`squares ${square}`}
+
             />
         )
     })
@@ -51,7 +53,7 @@ export default function UserGames() {
         <div className="user-games">
             {whiteGames.map(game => {
                 return(
-                    <div className="chessboard">
+                    <div className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
                     {chessboard}
                     {positionPlacer(game.current_board_state)}
                     </div>
