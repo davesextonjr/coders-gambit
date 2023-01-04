@@ -3,6 +3,13 @@
     box-sizing: border-box;
     margin: 0;
     width: 100%;
+
+}
+
+:root {
+    height: 100%;
+    --background:black;
+    --color: white;
 }
 
 html {
@@ -10,10 +17,21 @@ html {
 }
 
 body {
-
+    background-color: var(--background);
+    color: var(--color);
     height: 100%;
 }
 
-#root {
-    height: 100%;
+[data-board="light"]{
+    --background: antiquewhite;
+    --color: black;
+}
+
+[data-board="blue"]{
+    --background: blue;
+    --color: green;
+}
+[data-board="dark"]{
+    --background: black;
+    --color: white;
 }
