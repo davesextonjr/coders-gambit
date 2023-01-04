@@ -38,6 +38,7 @@ export default function GameBoard() {
             current_board_state: JSON.stringify(newPosition)
         }
 
+
         console.log("update game info",game)
         dispatch(updateGame(game))
 
