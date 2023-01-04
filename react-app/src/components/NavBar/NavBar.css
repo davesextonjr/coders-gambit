@@ -8,3 +8,11 @@ a {
     text-decoration: none;
     color: rgb(170, 170, 170);
 }
+
+.profile-container {
+    background-color: var(--box-background);
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    width: 200px;
+}

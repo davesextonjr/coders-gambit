@@ -24,15 +24,18 @@ body {
 
 [data-board="light"]{
     --background: antiquewhite;
+    --box-background: white;
     --color: black;
 }
 
 [data-board="blue"]{
     --background: blue;
+    --box-background: white;
     --color: green;
 }
 [data-board="dark"]{
     --background: black;
+    --box-background: rgb(93, 91, 91);
     --color: rgb(192, 182, 182);
     --hover: white;
 }

@@ -2,11 +2,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import ProfileButton from './ProfileButton';
 import './NavBar.css'
 
 const NavBar = () => {
+  const theme = "dark"
   return (
-    <nav>
+    <nav data-board={theme}>
 
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
@@ -26,6 +28,8 @@ const NavBar = () => {
           </NavLink>
 
           <LogoutButton />
+
+          <ProfileButton />
 
     </nav>
   );
