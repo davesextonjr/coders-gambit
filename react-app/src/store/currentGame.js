@@ -105,13 +105,13 @@ const initialState = {position: null, whiteUser:null, blackUser:null, moves:[], 
 export default function currentGameReducer(state = initialState, action){
     switch(action.type){
         case CREATE_GAME:{
-            const newState = {...state, gameId: action.game.id, position: action.position, whiteUser:action.game.white_id, blackUser: action.game.black_id}
+            const newState = {...state, gameId: action.game.id, position: action.position, whiteUser:action.game.white_id, blackUser: action.game.black_id, moves:[]}
             return newState
         }
         case ADD_POSITION:{
             const newState = {...state}
             newState.position = {...state.position, ...action.position}
-            newState.moves = [...state.moves, ...action.moves]
+            newState.moves = [...action.moves]
             return newState
         }
         case SET_GAME_BY_ID:{
