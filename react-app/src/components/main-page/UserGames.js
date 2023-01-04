@@ -31,9 +31,7 @@ export default function UserGames() {
                 id={square}
                 key={square}
                 className={`squares ${square}`}
-            >
-                {square}
-            </div>
+            />
         )
     })
 
@@ -50,7 +48,7 @@ export default function UserGames() {
 
 
     return (
-        <div className="userGames">
+        <div className="user-games">
             {whiteGames.map(game => {
                 return(
                     <div className="chessboard">
