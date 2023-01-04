@@ -1,5 +1,4 @@
 from flask import Blueprint, json, request, session, jsonify
-from flask_login import login_required
 from sqlalchemy import select
 from ..forms import NewGameForm, UpdateGameForm
 from ..models import Game, db, User
@@ -8,13 +7,15 @@ from flask_login import login_required, current_user
 
 game_routes = Blueprint('games', __name__)
 
-@game_routes.route('/')
+@game_routes.route('')
 @login_required
 def get_users_games():
     '''
     Querry all the games belonging to the current logged in user.
     '''
     user = current_user.to_dict()
+    print("!!!!!!!!!!!!!!!!!!!!WEREHERE", user)
+
     user_white_games = {}
     user_black_games = {}
 

@@ -5,7 +5,7 @@ import { dragOverHandler } from "./helper-functions/DragAndDrop";
 import './game.css'
 import { setEnd } from "../../store/move";
 import { addPosition, updateGame } from "../../store/currentGame";
-import { openingPosition } from "./definitions/opening-position";
+import chessboardCreator from "./definitions/chessboard";
 
 export default function GameBoard() {
 
@@ -45,19 +45,19 @@ export default function GameBoard() {
     }
 
 
-    const rowNumber = ["8", "7", "6", "5", "4", "3", "2", "1"]
-    const columnLetter = ["a", "b", "c", "d", "e", "f", "g", "h"]
+    // const rowNumber = ["8", "7", "6", "5", "4", "3", "2", "1"]
+    // const columnLetter = ["a", "b", "c", "d", "e", "f", "g", "h"]
 
-    const chessboard = []
-    for (let i = 0; i < rowNumber.length; i++) {
-        for (let j = 0; j < columnLetter.length; j++) {
-            chessboard.push(`${columnLetter[j]}${rowNumber[i]}`)
-        }
-    }
+    // const chessboard = []
+    // for (let i = 0; i < rowNumber.length; i++) {
+    //     for (let j = 0; j < columnLetter.length; j++) {
+    //         chessboard.push(`${columnLetter[j]}${rowNumber[i]}`)
+    //     }
+    // }
+    const chessboard = chessboardCreator()
 
     return (
         <div className="background">
-            <div>{chessboard.join(", ")}</div>
             <div className="chessboard">
                 {chessboard.map((square) => {
                     return (

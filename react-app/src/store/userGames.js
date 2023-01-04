@@ -13,7 +13,7 @@ export const loadUserGames = () => async dispatch => {
     const response = await fetch(`/api/game`)
     if (response.ok) {
         const games = await response.json()
-        dispatch(loadGames)
+        dispatch(loadGames(games))
         return games
     }
     const error = await response.json()

@@ -10,6 +10,7 @@ import User from './components/User';
 import Game from './components/game/Game';
 import MainPage from './components/main-page/MainPage';
 import { authenticate } from './store/session';
+import { loadUserGames } from './store/userGames';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -42,9 +43,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/' exact={true} >
+        <ProtectedRoute path='/' exact={true} >
           <MainPage />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute path='/game/:id'>
           <Game />
         </ProtectedRoute>
