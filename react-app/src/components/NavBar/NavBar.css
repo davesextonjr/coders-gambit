@@ -1,5 +1,5 @@
 nav {
-    background-color: black;
+    /* background-color: black; */
     display: flex;
     justify-content: space-between;
 }
@@ -11,8 +11,13 @@ a {
 
 .profile-container {
     background-color: var(--box-background);
+    color: var(--color);
     position: absolute;
     top: 40px;
     right: 0px;
     width: 200px;
+}
+
+.profile-container div{
+    color: var(--color);
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar/NavBar';
@@ -15,6 +15,8 @@ import { loadUserGames } from './store/userGames';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const theme = useSelector(state => state.theme)
+
 
   useEffect(() => {
     (async() => {
@@ -27,7 +29,10 @@ function App() {
     return null;
   }
 
+
   return (
+
+    <div className='main' data-board={theme.background} style={{ backgroundImage: theme.url ? `url(${theme.url})` : 'none' }}>
     <BrowserRouter>
       <NavBar />
       <Switch>
@@ -51,6 +56,7 @@ function App() {
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
+  </div>
   );
 }
 
