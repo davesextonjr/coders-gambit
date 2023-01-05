@@ -1,8 +1,8 @@
-"""Initial Migration
+"""empty message
 
-Revision ID: 425d1285a170
+Revision ID: cb6a22705a5e
 Revises:
-Create Date: 2023-01-05 09:12:07.527520
+Create Date: 2023-01-05 13:15:16.560903
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '425d1285a170'
+revision = 'cb6a22705a5e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,14 +44,15 @@ def upgrade():
     sa.ForeignKeyConstraint(['white_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE games SET SCHEMA {SCHEMA};")
+
 
     op.create_table('themes',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('theme_name', sa.String(length=25), nullable=False),
+    sa.Column('background', sa.String(length=25), nullable=False),
     sa.Column('light_squares', sa.String(length=25), nullable=False),
     sa.Column('dark_squares', sa.String(length=25), nullable=False),
     sa.Column('piece_name', sa.String(length=25), nullable=False),
@@ -59,7 +60,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
     if environment == "production":
         op.execute(f"ALTER TABLE themes SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
