@@ -1,11 +1,12 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { setTheme } from "../../store/theme"
+import { addTheme, setTheme } from "../../store/theme"
+import { useHistory } from "react-router-dom";
 
 export default function AddThemeForm() {
     const currentBackground = useSelector(state => state.theme.background)
     const userId = useSelector(state => state.session.user.id)
-
+    const history = useHistory()
     const [themeName, setThemeName] = useState('default')
     const [lightSquares, setLightSquares] = useState('#e2e4f5')
     const [darkSquares, setDarkSqares] = useState('#4e5159')
@@ -21,23 +22,22 @@ export default function AddThemeForm() {
 
         const newTheme = {
             userId,
-            theme_name: themeName,
+            themeName,
             background,
-            light_squares: lightSquares,
-            dark_squares: darkSquares,
-            piece_name: pieceName,
+            lightSquares,
+            darkSquares,
+            pieceName,
             url
         }
 
     console.log(newTheme)
-        dispatch(setTheme(newTheme))
-        // const returnSpot = await dispatch(addSpotThunk(newSpot))
+        const returnTheme = await dispatch(addTheme(newTheme))
         // .catch(async (res) => {
         //     const data = await res.json();
         //     if (data && data.errors) setErrors(data.errors);
         // });
         // if(errors.length) return alert("something went wrong");
-        // history.push(`/spots/${returnSpot.id}`)
+        history.push(`/`)
 
     }
 

@@ -36,5 +36,5 @@ def create_new_theme():
         )
         db.session.add(theme)
         db.session.commit()
-        return theme.to_dict
+        return theme.to_dict()
     return {'errors': validation_errors_to_error_messages}
