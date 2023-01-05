@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { setTheme } from "../../store/theme"
 import { loadUserThemes } from "../../store/userThemes"
+import './UserTheme.css'
 
 export default function UserThemes(){
     const dispatch = useDispatch()
@@ -16,7 +17,7 @@ export default function UserThemes(){
     }, [dispatch]);
     if (!loaded) {
         return (
-            <h1>waiting for user</h1>
+            <h1>waiting for themes</h1>
         )
     }
     const userThemes = Object.values(themes)

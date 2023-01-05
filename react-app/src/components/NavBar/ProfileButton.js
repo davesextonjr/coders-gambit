@@ -2,31 +2,42 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setTheme } from "../../store/theme";
+import UserThemes from "../themes/UserThemes";
 
 export default function ProfileButton() {
     const [isMenuShown, setIsMenuShown] = useState(false)
+    const [areThemesShown, setAreThemesShown] = useState(false)
 
     const history = useHistory()
 
     const toggleMenu = () => isMenuShown ? setIsMenuShown(false) : setIsMenuShown(true)
-    const closeMenu = () => setIsMenuShown(false)
+    const toggleThemesMenu = () => areThemesShown ? setAreThemesShown(false) : setAreThemesShown(true)
+    const closeMenu = () => {setIsMenuShown(false)}
+    const closeThemesMenu = () => setAreThemesShown(false)
     const dispatch = useDispatch()
     useEffect(() => {
         if (!isMenuShown) return
         document.addEventListener('click', closeMenu)
         return () => document.removeEventListener("click", closeMenu)
     }, [isMenuShown])
+    useEffect(() => {
+        if (!areThemesShown) return
+        document.addEventListener('click', closeThemesMenu)
+        return () => document.removeEventListener("click", closeThemesMenu)
+    }, [areThemesShown])
 
     const clickHandler = e => {
         e.stopPropagation()
         // console.log(e.target.id)
-        dispatch(setTheme({background: e.target.id, url: ""}))
+        let url = ""
+        if (e.target.id === "transparent") url = "https://lichess1.org/assets/images/background/landscape.jpg"
+        dispatch(setTheme({background: e.target.id, url: url}))
     }
 
     const clickYourThemes = e => {
         e.stopPropagation()
+        setAreThemesShown(true)
 
-        dispatch(setTheme({background: e.target.id, url: "https://lichess1.org/assets/images/background/landscape.jpg"}))
     }
 
     const clickCreateTheme = e => {
@@ -41,13 +52,22 @@ export default function ProfileButton() {
                 Choose Theme
             </div>
             {isMenuShown && (
-                <div className="profile-container">
+                <>
+                <div className="themes container">
                     <div onClick={clickHandler} id='light'>Light</div>
                     <div onClick={clickHandler} id='dark'>Dark</div>
                     <div onClick={clickHandler} id='sepia'>Sepia</div>
+                    <div onClick={clickHandler} id='transparent'>Transparent</div>
                     <div onClick={clickYourThemes} id='transparent'>Your Themes</div>
                     <div onClick={clickCreateTheme}>Create Theme</div>
                 </div>
+                {areThemesShown && (
+                   <div className="user-themes container">
+                        <UserThemes />
+                   </div>
+                )}
+                </>
+
             )}
         </>
     )
