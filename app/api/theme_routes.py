@@ -1,6 +1,7 @@
 from flask import Blueprint, json, request, session, jsonify
 from sqlalchemy import select
-from ..models import db
+from ..models import db, Theme
+from ..forms import AddEditThemeForm
 from .auth_routes import validation_errors_to_error_messages
 from flask_login import login_required, current_user
 
@@ -21,4 +22,18 @@ def create_new_theme():
     '''
     Creates a new theme
     '''
-    pass
+    form = AddEditThemeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        theme = Theme(
+            user_id=form.data['user_id'],
+            theme_name=form.data['theme_name'],
+            light_squares=form.data['light_squares'],
+            dark_squares=form.data['dark_squares'],
+            piece_name=form.data['piece_name'],
+            url=form.data['url']
+        )
+        db.session.add(theme)
+        db.session.commit()
+        return theme.to_dict
+    return {'errors': validation_errors_to_error_messages}
