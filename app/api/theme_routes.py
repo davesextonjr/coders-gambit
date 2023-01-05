@@ -13,7 +13,14 @@ def get_user_themes():
     '''
     Find and return all the users saved themes.
     '''
-    pass
+
+    user_themes = {}
+
+    for theme in current_user.theme:
+        user_themes[theme.id] = theme.to_dict()
+
+    return user_themes
+
 
 
 @theme_routes.route('/new', methods=['POST'])
