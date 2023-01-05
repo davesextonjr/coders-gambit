@@ -8,6 +8,7 @@ from .models import db, User, Game
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.game_routes import game_routes
+from .api.theme_routes import theme_routes
 from .seeds import seed_commands
 from .config import Config
 
@@ -30,6 +31,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(game_routes, url_prefix='/api/game')
+app.register_blueprint(theme_routes, url_prefix='/api/theme')
 
 db.init_app(app)
 Migrate(app, db)
@@ -38,9 +40,7 @@ Migrate(app, db)
 CORS(app)
 
 
-# Since we are deploying with Docker and Flask,
-# we won't be using a buildpack when we deploy to Heroku.
-# Therefore, we need to make sure that in production any
+# we need to make sure that in production any
 # request made over http is redirected to https.
 # Well.........
 @app.before_request
