@@ -7,10 +7,10 @@ import './NavBar.css'
 import { useSelector } from 'react-redux';
 
 const NavBar = () => {
-  const theme = useSelector(state => state.theme.background)
+
 
   return (
-    <nav data-board={theme}>
+    <nav>
 
           <NavLink to='/' exact={true} activeClassName='active'>
             Home

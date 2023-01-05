@@ -4,9 +4,22 @@ nav {
     justify-content: space-between;
 }
 
+nav div{
+    color: rgb(170, 170, 170);
+}
+
+nav div:hover{
+    color: rgb(252, 249, 249);
+    cursor: pointer;
+}
+
 a {
     text-decoration: none;
     color: rgb(170, 170, 170);
+}
+
+a:hover{
+    color: rgb(252, 249, 249);
 }
 
 .profile-container {

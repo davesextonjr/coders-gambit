@@ -13,6 +13,7 @@ class Theme(db.Model):
     id = db.Column(db.Integer, nullable=False, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     theme_name = db.Column(db.String(25), nullable=False)
+    background = db.Column(db.String(25), nullable=False)
     light_squares = db.Column(db.String(25), nullable=False)
     dark_squares = db.Column(db.String(25), nullable=False)
     piece_name = db.Column(db.String(25), nullable=False)
