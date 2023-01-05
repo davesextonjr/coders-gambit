@@ -28,6 +28,7 @@ def create_new_theme():
         theme = Theme(
             user_id=form.data['user_id'],
             theme_name=form.data['theme_name'],
+            background=form.data['background'],
             light_squares=form.data['light_squares'],
             dark_squares=form.data['dark_squares'],
             piece_name=form.data['piece_name'],
