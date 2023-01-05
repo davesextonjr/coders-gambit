@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
     game_as_white = db.relationship('Game', foreign_keys='Game.white_id', back_populates ='user_as_white')
     game_as_black = db.relationship('Game', foreign_keys='Game.black_id',back_populates ='user_as_black')
 
+    theme = db.relationship('Theme', back_populates='user')
+
     @property
     def password(self):
         return self.hashed_password
