@@ -38,10 +38,10 @@ export default function ProfileButton() {
     return (
         <>
             <div className="menu" onClick={toggleMenu}>
-                username here
+                Choose Theme
             </div>
             {isMenuShown && (
-                <div className="profile-container">Choose Your Theme
+                <div className="profile-container">
                     <div onClick={clickHandler} id='light'>Light</div>
                     <div onClick={clickHandler} id='dark'>Dark</div>
                     <div onClick={clickHandler} id='sepia'>Sepia</div>
