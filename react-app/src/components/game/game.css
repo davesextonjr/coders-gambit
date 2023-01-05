@@ -1,7 +1,7 @@
 .background {
-    background-color: var(--background);
+
     height: 100%;
-    border: black solid 1px;
+    border: rgba(0, 0, 0, 0) solid 1px;
 }
 
 .chessboard {
