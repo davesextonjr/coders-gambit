@@ -12,11 +12,20 @@
     --color: white;
 }
 
+#root{
+    height: 100%;
+}
+
 html {
     height: 100%;
 }
 
 body {
+    height: 100%;
+}
+
+.main {
+    height: 100%;
     background-color: var(--background);
     color: var(--color);
     height: 100%;
@@ -24,14 +33,18 @@ body {
 
 [data-board="light"]{
     --background: antiquewhite;
+    --box-background: white;
     --color: black;
 }
 
 [data-board="blue"]{
     --background: blue;
+    --box-background: white;
     --color: green;
 }
 [data-board="dark"]{
     --background: black;
-    --color: white;
+    --box-background: rgb(93, 91, 91);
+    --color: rgb(192, 182, 182);
+    --hover: white;
 }

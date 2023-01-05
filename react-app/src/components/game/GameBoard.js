@@ -34,7 +34,7 @@ export default function GameBoard() {
             id: currentGame.gameId,
             white_id: currentGame.whiteUser,
             black_id: currentGame.blackUser,
-            moves: JSON.stringify([...currentGame.moves, `${start.startPosition}-${e.target.id}`]),
+            moves: JSON.stringify([...currentGame.moves, currentPosition]),
             current_board_state: JSON.stringify(newPosition)
         }
 

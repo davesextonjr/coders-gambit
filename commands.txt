@@ -1,0 +1,8 @@
+pipenv shell
+
+Flask-Migrate (https://flask-migrate.readthedocs.io/en/latest/)
+    flask db init  (adds the migration)
+    flask db migrate -m "insert message" (generates the migration)
+    flask db upgrade (applies changes to the database)
+
+flask seed all (runs seed files)
