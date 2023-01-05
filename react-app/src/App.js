@@ -11,6 +11,7 @@ import Game from './components/game/Game';
 import MainPage from './components/main-page/MainPage';
 import { authenticate } from './store/session';
 import { loadUserGames } from './store/userGames';
+import AddThemeForm from './components/themes/AddThemeForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -53,6 +54,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/game/:id'>
           <Game />
+        </ProtectedRoute>
+        <ProtectedRoute path='/theme/add'>
+          <AddThemeForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
