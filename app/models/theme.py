@@ -26,6 +26,7 @@ class Theme(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'theme_name': self.theme_name,
+            'background': self.background,
             'light_squares': self.light_squares,
             'dark_squares': self.dark_squares,
             'piece_name': self.piece_name,

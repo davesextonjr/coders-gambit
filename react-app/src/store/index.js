@@ -4,10 +4,11 @@ import session from './session'
 import currentGame from './currentGame';
 import move from './move';
 import userGames from './userGames';
-import theme from './theme'
+import theme from './theme';
+import userThemes from './userThemes';
 
 const rootReducer = combineReducers({
-  session, currentGame, move, userGames, theme
+  session, currentGame, move, userGames, theme, userThemes
 });
 
 

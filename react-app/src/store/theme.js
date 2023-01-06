@@ -16,7 +16,19 @@ export const setTheme = ({background, url, theme_name, light_squares, dark_squar
 
 //Thunks(Middleware)
 export const addTheme = theme => async dispatch => {
-    const response = await fetch('api/theme/new', {
+    const jason = JSON.stringify({
+        user_id: theme.userId,
+        theme_name: theme.themeName,
+        background: theme.background,
+        light_squares: theme.lightSquares,
+        dark_squares: theme.darkSquares,
+        piece_name: theme.pieceName,
+        url: theme.url
+    })
+
+    console.log(jason)
+
+    const response = await fetch('/api/theme/new', {
         method: 'POST',
         headers:{
             'Content-Type': 'application/json'
@@ -24,6 +36,7 @@ export const addTheme = theme => async dispatch => {
         body: JSON.stringify({
             user_id: theme.userId,
             theme_name: theme.themeName,
+            background: theme.background,
             light_squares: theme.lightSquares,
             dark_squares: theme.darkSquares,
             piece_name: theme.pieceName,
@@ -33,7 +46,11 @@ export const addTheme = theme => async dispatch => {
 
     if (response.ok){
         const theme = await response.json()
+        dispatch(setTheme(theme))
+        return theme
     }
+    const error = await response.json()
+    return error
 }
 
 

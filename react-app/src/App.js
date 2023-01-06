@@ -12,6 +12,7 @@ import MainPage from './components/main-page/MainPage';
 import { authenticate } from './store/session';
 import { loadUserGames } from './store/userGames';
 import AddThemeForm from './components/themes/AddThemeForm';
+import UserThemes from './components/themes/UserThemes';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -57,6 +58,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/theme/add'>
           <AddThemeForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/theme'>
+          <UserThemes />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
