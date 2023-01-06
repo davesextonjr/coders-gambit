@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
-import { openingPosition } from "./definitions/opening-position";
 import { pieces } from "./definitions/pieces";
-import { setPiece, setStart, setEnd } from "../../store/move";
+import { setPiece, setStart } from "../../store/move";
 
 import { useDispatch, useSelector } from 'react-redux';
-
-import './game.css'
-import { addPosition, getGameById, updateGame } from "../../store/currentGame";
+import { getGameById, updateGame } from "../../store/currentGame";
 
 
 export default function GamePlay() {
@@ -18,20 +15,17 @@ export default function GamePlay() {
     const dispatch = useDispatch()
     useEffect(() => {
         (async () => {
-          await dispatch(getGameById(id));
-          setLoaded(true);
+            await dispatch(getGameById(id));
+            setLoaded(true);
         })();
-      }, [dispatch, id]);
-      const currentGame = useSelector(state => state.currentGame)
-      const currentPosition = useSelector(state => state.currentGame.position)
+    }, [dispatch, id]);
+    const currentGame = useSelector(state => state.currentGame)
+    const currentPosition = useSelector(state => state.currentGame.position)
     if (!loaded) {
-        // dispatch(addPosition(openingPosition, []))
-        console.log('I was here for a sec')
         return (
             <h1>waiting for a position</h1>
         )
     }
-
     const dragOverHandler = (e) => {
         e.preventDefault()
         e.stopPropagation()
@@ -43,15 +37,14 @@ export default function GamePlay() {
         dispatch(setPiece(e.target.name))
         setBegin(e.target.id)
         setBeginPiece(e.target.name)
-        // console.log(e.target.id, e.target.name)
     }
     const dropHandler = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        dispatch(setEnd(e.target.id)) // currently not using this
-        const newPosition = {...currentPosition}
+        // dispatch(setEnd(e.target.id)) // currently not using this
+        const newPosition = { ...currentPosition }
 
-        if (begin && beginPiece && e.target.id){
+        if (begin && beginPiece && e.target.id) {
             newPosition[begin] = null
             newPosition[e.target.id] = beginPiece
         }
@@ -63,17 +56,14 @@ export default function GamePlay() {
             current_board_state: JSON.stringify(newPosition)
         }
 
-
-         console.log("update game info",game)
         dispatch(updateGame(game))
-
 
     }
 
     const gameState = []
-    for (const square in currentPosition){
+    for (const square in currentPosition) {
         const piece = currentPosition[square]
-        if(piece){
+        if (piece) {
             gameState.push(<img
                 src={pieces[piece].image}
                 key={square}
@@ -84,15 +74,14 @@ export default function GamePlay() {
                 onDragStart={dragStartHandler}
                 onDragOver={dragOverHandler}
                 onDrop={dropHandler}
-                />)
+            />)
         }
     }
 
 
     return (
         <>
-            {gameState }
-            {/* <h1>TESTING</h1> */}
+            {gameState}
         </>
 
     )

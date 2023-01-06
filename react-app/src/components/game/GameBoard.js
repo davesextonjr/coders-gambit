@@ -1,32 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import GamePlay from "./GamePlay";
-import { dragOverHandler } from "./helper-functions/DragAndDrop";
-import './game.css'
+
+// Using Redux to manage state - "thunks" are used as middleware to make fetch requests and then call the actions
 import { setEnd } from "../../store/move";
-import { addPosition, updateGame } from "../../store/currentGame";
+import { updateGame } from "../../store/currentGame";
+
+// Continuing to grow in using modular code
+import { dragOverHandler } from "./helper-functions/DragAndDrop";
 import chessboardCreator from "./definitions/chessboard";
+import './game.css'
+
 
 export default function GameBoard() {
-
     const dispatch = useDispatch()
+    const chessboard = chessboardCreator()
+
+    //TODO: Research if it would be better to use one less useSelctor.
+    //I chose to make two variables here from the currentGame slice of state
     const start = useSelector(state => state.move)
     const currentPosition = useSelector(state => state.currentGame.position)
     const currentGame = useSelector(state => state.currentGame)
+
+
+    //TODO: Refactor into more modular code.
+    // I still have room to grow in passing context.
     const dropHandler = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        dispatch(setEnd(e.target.id)) //not currently reading this
-        // console.log("start in drop", start.startPosition, start.pieceName)
-        // console.log(e.target.id)
-        // console.log(currentPosition)
-        const newPosition = {...currentPosition}
-        // const newMoves = []
-        if (start.startPosition && start.pieceName && e.target.id){
+        // dispatch(setEnd(e.target.id)) //not currently using this end in moves.
+
+        //create an object to hold the new position
+        const newPosition = { ...currentPosition }
+
+        //if the starting square, piece name, and ending square are all known, set the landing square to the piece name, and the leaving square to null.
+
+        //TODO: I am looking forward to thinking through how to define the move logic as I continue to hone my skill as a programmer.
+        if (start.startPosition && start.pieceName && e.target.id) {
             newPosition[start.startPosition] = null
             newPosition[e.target.id] = start.pieceName
-            // newMoves.push(`${start.startPosition}-${e.target.id}`)
         }
+
+        //This object will be sent to the database to store the move and then the return will be used to update the store.
+
+        //TODO: refactor to make less database calls
 
         const game = {
             id: currentGame.gameId,
@@ -36,43 +52,26 @@ export default function GameBoard() {
             current_board_state: JSON.stringify(newPosition)
         }
 
-
-        // console.log("update game info",game)
         dispatch(updateGame(game))
-
-
     }
 
 
-    // const rowNumber = ["8", "7", "6", "5", "4", "3", "2", "1"]
-    // const columnLetter = ["a", "b", "c", "d", "e", "f", "g", "h"]
-
-    // const chessboard = []
-    // for (let i = 0; i < rowNumber.length; i++) {
-    //     for (let j = 0; j < columnLetter.length; j++) {
-    //         chessboard.push(`${columnLetter[j]}${rowNumber[i]}`)
-    //     }
-    // }
-    const chessboard = chessboardCreator()
-
     return (
-        <div className="background">
-            <div className="chessboard">
-                {chessboard.map((square) => {
-                    return (
-                        <div
-                            id={square}
-                            key={square}
-                            className={`squares ${square}`}
-                            onDragOver={dragOverHandler}
-                            onDrop={dropHandler}
-                        >{square}
-                        </div>
-                    )
-                })
-                }
-                <GamePlay />
-            </div>
-        </div>
+        <>
+            {chessboard.map((square) => {
+                return (
+                    <div
+                        id={square}
+                        key={square}
+                        className={`squares ${square}`}
+                        onDragOver={dragOverHandler}
+                        onDrop={dropHandler}
+                    >
+                        {square}
+                    </div>
+                )
+            })
+            }
+        </>
     )
 }
