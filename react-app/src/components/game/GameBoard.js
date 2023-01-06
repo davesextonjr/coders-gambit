@@ -16,7 +16,7 @@ export default function GameBoard() {
     const dropHandler = (e) => {
         e.preventDefault()
         e.stopPropagation()
-        dispatch(setEnd(e.target.id))
+        dispatch(setEnd(e.target.id)) //not currently reading this
         // console.log("start in drop", start.startPosition, start.pieceName)
         // console.log(e.target.id)
         // console.log(currentPosition)
@@ -27,9 +27,7 @@ export default function GameBoard() {
             newPosition[e.target.id] = start.pieceName
             // newMoves.push(`${start.startPosition}-${e.target.id}`)
         }
-        // let arr = Object.entries(newPosition)
-        //console.log(Object.fromEntries(arr))
-        // console.log(arr.join(" "))
+
         const game = {
             id: currentGame.gameId,
             white_id: currentGame.whiteUser,
@@ -39,7 +37,7 @@ export default function GameBoard() {
         }
 
 
-        console.log("update game info",game)
+        // console.log("update game info",game)
         dispatch(updateGame(game))
 
 
