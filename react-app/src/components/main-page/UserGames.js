@@ -37,25 +37,19 @@ export default function UserGames() {
         )
     })
 
-
-
-    // const gameState = []
-    // for (const square in currentPosition){
-    //     const piece = currentPosition[square]
-    //     if(piece){
-    //         gameState.push(<img src={pieces[piece].image} key={square} name={piece} id={square} className={square} draggable={true} onDragStart={dragStartHandler}/>)
-    //     }
-    // }
-
-
-
     return (
         <div className="user-games">
             {whiteGames.map(game => {
-                return(
-                    <div className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
-                    {chessboard}
-                    {/* {positionPlacer(game.current_board_state)} */}
+                return (
+                    <div classname='chessboard-container'>
+                        <div className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
+                            {chessboard}
+                            {positionPlacer(game.current_board_state)}
+                        </div>
+                        <div className="button-container">
+                            <button onClick={() => history.push(`/game/${game.id}`)}>Continue Game</button>
+                            <button>Delete Game</button>
+                        </div>
                     </div>
                 )
             })}
