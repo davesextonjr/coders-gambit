@@ -9,8 +9,6 @@ import { updateGame } from "../../store/currentGame";
 import { dragOverHandler } from "./helper-functions/DragAndDrop";
 import chessboardCreator from "./definitions/chessboard";
 
-
-
 export default function GameBoard() {
     const dispatch = useDispatch()
     const chessboard = chessboardCreator()
@@ -20,7 +18,6 @@ export default function GameBoard() {
     const start = useSelector(state => state.move)
     const currentPosition = useSelector(state => state.currentGame.position)
     const currentGame = useSelector(state => state.currentGame)
-
 
     //TODO: Refactor into more modular code.
     // I still have room to grow in passing context.
@@ -33,7 +30,6 @@ export default function GameBoard() {
         const newPosition = { ...currentPosition }
 
         //if the starting square, piece name, and ending square are all known, set the landing square to the piece name, and the leaving square to null.
-
         //TODO: I am looking forward to thinking through how to define the move logic as I continue to hone my skill as a programmer.
         if (start.startPosition && start.pieceName && e.target.id) {
             newPosition[start.startPosition] = null
@@ -41,9 +37,7 @@ export default function GameBoard() {
         }
 
         //This object will be sent to the database to store the move and then the return will be used to update the store.
-
         //TODO: refactor to make less database calls
-
         const game = {
             id: currentGame.gameId,
             white_id: currentGame.whiteUser,
@@ -51,10 +45,8 @@ export default function GameBoard() {
             moves: JSON.stringify([...currentGame.moves, currentPosition]),
             current_board_state: JSON.stringify(newPosition)
         }
-
         dispatch(updateGame(game))
     }
-
 
     return (
         <>
