@@ -1,4 +1,4 @@
-import { normalize } from "./utilities"
+
 
 //Definitions
 const LOAD = '/USER_GAMES_LOAD'
@@ -41,7 +41,7 @@ export const deleteUserGame = gameId => async dispatch => {
 
 
 //Initial State Definition
-const initialState = []
+const initialState = {user_white_games:{}}
 
 //Reducer
 export default function userGamesReducer (state = initialState, action){
@@ -50,11 +50,13 @@ export default function userGamesReducer (state = initialState, action){
             return action.games
         }
         case DELETE:{
-            let newState = [...state]
-            const allGames = normalize(newState)
-            delete allGames[action.gameId]
-            newState = Object.values(allGames)
-            return newState
+            const newState = {...state}
+
+            delete newState.user_white_games[action.gameId]
+            delete newState.user_black_games[action.gameId]
+
+            const returnState = {...state, user_white_games: {...newState.user_white_games}}
+            return returnState
         }
         default: return state
     }
