@@ -12,6 +12,7 @@ import MainPage from './components/main-page/MainPage';
 import { authenticate } from './store/session';
 import { loadUserGames } from './store/userGames';
 import AddThemeForm from './components/themes/AddThemeForm';
+import EditThemeForm from './components/themes/EditThemeForm';
 import UserThemes from './components/themes/UserThemes';
 
 function App() {
@@ -58,6 +59,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/theme/add'>
           <AddThemeForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/theme/edit'>
+          <EditThemeForm />
         </ProtectedRoute>
         <ProtectedRoute path='/theme'>
           <UserThemes />

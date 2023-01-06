@@ -32,18 +32,26 @@ export default function UserThemes(){
 
     return(
         <>
-            {userThemes.length ? userThemes.map(theme => {
-                return (
-                    <div
-                    key={`theme-{theme.id}`}
-                    class='theme-name'
-                    id={theme.id}
-                    onClick={clickHandler}
-                    >{theme.theme_name}</div>
-                )
-            })
+            {userThemes.length ?
+            <>
+                {userThemes.map(theme => {
+                    return (
+                        <div
+                        key={`theme-{theme.id}`}
+                        className='theme-name'
+                        id={theme.id}
+                        onClick={clickHandler}
+                        >{theme.theme_name}</div>
+                        )
+                    })}
+                <div className='edit-button' onClick={() => history.push('/theme/edit')}>Edit Your Themes</div>
+
+            </>
             :
             <div onClick={() => history.push('/theme/add')}>Add Styles First</div>}
+
+
         </>
+
     )
 }
