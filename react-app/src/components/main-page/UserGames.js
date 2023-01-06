@@ -55,7 +55,7 @@ export default function UserGames() {
                 return(
                     <div className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
                     {chessboard}
-                    {positionPlacer(game.current_board_state)}
+                    {/* {positionPlacer(game.current_board_state)} */}
                     </div>
                 )
             })}

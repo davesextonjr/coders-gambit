@@ -87,7 +87,7 @@ export const getGameById = id => async (dispatch) => {
     if (response.ok) {
         const game = await response.json()
         const position = JSON.parse(game.current_board_state)
-        let moves = JSON.parse(game.moves)
+        const moves = JSON.parse(game.moves)
         console.log("!!!!!!!!!!!!!!!!!!!!!!", game, position, moves)
         dispatch(setGameById(game, position, moves))
         return {game, position, moves}
@@ -120,8 +120,8 @@ export default function currentGameReducer(state = initialState, action){
             newState.whiteUser = action.game.white_id
             newState.blackUser = action.game.black_id
             newState.position = {...action.position}
-            newState.moves = [...state.moves, action.moves]
-            if(!newState.moves[0].length) newState.moves.shift()
+            newState.moves = [...action.moves]
+            if(newState.moves.length && Array.isArray(newState[0])) newState.moves.shift() //this is to get rid of the empty array as starting data
             return newState
         }
         default: return state
