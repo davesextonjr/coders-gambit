@@ -32,7 +32,7 @@ export default function UserThemes(){
 
     return(
         <>
-            {userThemes.map(theme => {
+            {userThemes.length ? userThemes.map(theme => {
                 return (
                     <div
                     key={`theme-{theme.id}`}
@@ -41,7 +41,9 @@ export default function UserThemes(){
                     onClick={clickHandler}
                     >{theme.theme_name}</div>
                 )
-            })}
+            })
+            :
+            <div onClick={() => history.push('/theme/add')}>Add Styles First</div>}
         </>
     )
 }
