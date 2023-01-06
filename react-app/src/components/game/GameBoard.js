@@ -8,7 +8,7 @@ import { updateGame } from "../../store/currentGame";
 // Continuing to grow in using modular code
 import { dragOverHandler } from "./helper-functions/DragAndDrop";
 import chessboardCreator from "./definitions/chessboard";
-import './game.css'
+
 
 
 export default function GameBoard() {
