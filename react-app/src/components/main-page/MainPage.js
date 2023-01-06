@@ -7,11 +7,12 @@ import { useSelector } from "react-redux";
 export default function MainPage(){
     // style={{backgroundImage: `url(https://lichess1.org/assets/images/background/landscape.jpg)`}}
     const theme = useSelector(state => state.theme.background)
+    const userGames = useSelector(state => state.userGames)
 
     return (
         <div className="main-page" data-board={theme} >
             <NewGame />
-            <UserGames />
+            <UserGames userGames={userGames} />
         </div>
     )
 }

@@ -1,12 +1,19 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addTheme, setTheme } from "../../store/theme"
 import { useHistory } from "react-router-dom";
+import { loadUserThemes } from "../../store/userThemes";
 
 export default function EditThemeForm() {
     const currentBackground = useSelector(state => state.theme.background)
     const userId = useSelector(state => state.session.user.id)
+
+    const dispatch = useDispatch()
     const history = useHistory()
+
+    const [themes, setThemes] = useState(null)
+    const [loaded, setLoaded] = useState(false)
+    const [themeId, setThemeId] = useState('1')
     const [themeName, setThemeName] = useState('default')
     const [lightSquares, setLightSquares] = useState('#e2e4f5')
     const [darkSquares, setDarkSqares] = useState('#4e5159')
@@ -14,7 +21,36 @@ export default function EditThemeForm() {
     const [url, setUrl] = useState('')
     const [background, setBackground] = useState(currentBackground)
 
-    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(loadUserThemes()).then(themes => setThemes(themes)).then(() =>
+            setLoaded(true)
+        )
+    }, [dispatch]);
+
+    if (!loaded) {
+        return (
+            <h1>waiting for themes</h1>
+        )
+    }
+    const userThemes = Object.values(themes)
+
+    console.log(themes)
+
+
+
+    const themeChangeHandler = e => {
+        setThemeId(e.target.value)
+        const theme = themes[e.target.value]
+        console.log("the theme is", {theme})
+        dispatch(setTheme(theme))
+        setThemeName(theme.theme_name)
+        setLightSquares(theme.light_squares)
+        setDarkSqares(theme.dark_squares)
+        setPieceName(theme.pieceName)
+        setUrl(theme.url)
+        setBackground(theme.background)
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +66,7 @@ export default function EditThemeForm() {
             url
         }
 
-    console.log(newTheme)
+        console.log(newTheme)
         const returnTheme = await dispatch(addTheme(newTheme))
         // .catch(async (res) => {
         //     const data = await res.json();
@@ -42,8 +78,20 @@ export default function EditThemeForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor='theme-name'>Choose a theme name:</label>
+        <form onSubmit={() => console.log("submitted")}>
+            <label htmlFor='theme-name'>Choose your theme:</label>
+            <select
+                id='theme-name'
+                value={themeId}
+                onChange={themeChangeHandler}
+                required >
+                {userThemes.map(theme => {
+                    return(
+                        <option key={`value-${theme.id}`} value={theme.id}>{theme.theme_name}</option>
+                    )
+                })}
+            </select>
+
             <input
                 id='theme-name'
                 type="text"
@@ -92,15 +140,16 @@ export default function EditThemeForm() {
                 <option value="transparent">transparent</option>
             </select>
             <label htmlFor="url">(Optional) Enter an image url to set a background image:</label>
-                <input
-                    id="spot-url"
-                    type='url'
-                    placeholder="https://example.com"
-                    pattern="https://.*"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    ></input>
-            <button type="submit">Add Your Theme</button>
+            <input
+                id="spot-url"
+                type='url'
+                placeholder="https://example.com"
+                pattern="https://.*"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+            ></input>
+            <button onClick={() => history.push('/')}>Cancel</button>
+            <button type="submit">Update Your Theme</button>
         </form>
     )
 }
