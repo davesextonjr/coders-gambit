@@ -36,6 +36,13 @@ def get_game_by_id(id):
     game = Game.query.get(id)
     return game.to_dict()
 
+@game_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_game(id):
+    game = Game.query.get(id)
+    db.session.delete(game)
+    db.session.commit()
+    return {'Message': 'Game successfully deleted'}
 
 @game_routes.route('/new', methods=['POST'])
 def create_new_game():
