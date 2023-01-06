@@ -67,7 +67,7 @@ export default function EditThemeForm() {
         }
 
         console.log(newTheme)
-        const returnTheme = await dispatch(addTheme(newTheme))
+        // const returnTheme = await dispatch(addTheme(newTheme))
         // .catch(async (res) => {
         //     const data = await res.json();
         //     if (data && data.errors) setErrors(data.errors);

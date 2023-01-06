@@ -45,3 +45,29 @@ def create_new_theme():
         db.session.commit()
         return theme.to_dict()
     return {'errors': validation_errors_to_error_messages}
+
+
+@theme_routes.route('/update', methods=['PUT'])
+@login_required
+def update_game():
+    """
+    Updates one of the users current themes
+    """
+    form = AddEditThemeForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+       edited_theme = json.loads(request.data.decode('UTF-8'))
+       theme = Theme.query.get(edited_theme['id'])
+
+       theme.theme_name = edited_theme['theme_name']
+       theme.background = edited_theme['background']
+       theme.light_squares = edited_theme['light_squares']
+       theme.dark_squares = edited_theme['dark_squares']
+       theme.piece_name = edited_theme['piece_name']
+       theme.url = edited_theme['url']
+
+       db.session.commit()
+       saved_theme = theme.to_dict()
+       return saved_theme
+
+    return {'errors': validation_errors_to_error_messages}

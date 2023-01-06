@@ -45,6 +45,7 @@ def delete_game(id):
     return {'Message': 'Game successfully deleted'}
 
 @game_routes.route('/new', methods=['POST'])
+@login_required
 def create_new_game():
     """
     Creates new game
@@ -64,9 +65,10 @@ def create_new_game():
     return {'errors': validation_errors_to_error_messages}
 
 @game_routes.route('/update', methods=['PUT'])
+@login_required
 def update_game():
     """
-    Updates the Game
+    Updates one of the users current games
     """
     form = UpdateGameForm()
     form['csrf_token'].data = request.cookies['csrf_token']
