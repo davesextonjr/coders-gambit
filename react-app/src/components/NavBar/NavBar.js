@@ -21,22 +21,21 @@ const NavBar = () => {
           Home
         </NavLink>
 
-        <NavLink to='/login' exact={true} activeClassName='active'>
-          Sign In
+        <NavLink to='/games' exact={true} activeClassName='active'>
+          Your Games
         </NavLink>
 
-        <NavLink to='/sign-up' exact={true} activeClassName='active'>
-          Register
-
+        <NavLink to='/theme/add' exact={true} activeClassName='active'>
+          Create New Theme
         </NavLink>
 
-        <NavLink to='/users' exact={true} activeClassName='active'>
-          Users
+        <NavLink to='/theme/edit' exact={true} activeClassName='active'>
+          Edit Your Themes
         </NavLink>
-
-        <LogoutButton />
 
         <ProfileButton />
+
+        <LogoutButton />
 
       </nav>
       :

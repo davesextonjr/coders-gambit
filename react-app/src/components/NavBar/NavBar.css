@@ -2,10 +2,12 @@ nav {
     /* background-color: black; */
     display: flex;
     justify-content: space-between;
+
 }
 
 nav div{
     color: rgb(170, 170, 170);
+
 }
 
 nav div:hover{
@@ -15,6 +17,7 @@ nav div:hover{
 
 a {
     text-decoration: none;
+    font-size: medium;
     color: rgb(170, 170, 170);
 }
 
@@ -23,6 +26,7 @@ a:hover{
 }
 
 .container {
+
     background-color: gray;
     display: flex;
     flex-direction: column;

@@ -13,7 +13,7 @@ export default function MainPage(){
         <div className="main-page" data-board={theme} >
 
             <NewGame />
-            <UserGames userGames={userGames} />
+            <UserGames />
         </div>
     )
 }

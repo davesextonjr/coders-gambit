@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Game from './components/game/Game';
 import MainPage from './components/main-page/MainPage';
+import UserGames from './components/main-page/UserGames';
 import { authenticate } from './store/session';
 import { loadUserGames } from './store/userGames';
 import AddThemeForm from './components/themes/AddThemeForm';
@@ -46,8 +47,13 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/games' exact={true} >
+          <UserGames />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
