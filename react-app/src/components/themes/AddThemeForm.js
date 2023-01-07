@@ -31,7 +31,7 @@ export default function AddThemeForm() {
             url
         }
 
-        console.log(newTheme)
+
         const returnTheme = await dispatch(addTheme(newTheme))
         if (returnTheme.errors) {
             const errorArray = []
@@ -40,6 +40,8 @@ export default function AddThemeForm() {
                 errorArray.push(body)
             })
             setErrors(errorArray)
+        } else {
+            history.push('/')
         }
 
 

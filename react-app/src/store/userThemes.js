@@ -1,3 +1,5 @@
+import { setTheme } from "./theme"
+
 //Definitions
 const LOAD = '/user_theme/LOAD'
 
@@ -46,6 +48,7 @@ export const updateThemeById = theme => async dispatch => {
     if (response.ok){
         const theme = await response.json()
         dispatch(updateTheme(theme))
+        dispatch(setTheme(theme))
         return theme
     }
     const error = await response.json()

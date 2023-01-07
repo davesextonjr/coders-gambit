@@ -14,12 +14,13 @@ export default function EditThemeForm() {
     const [themes, setThemes] = useState(null)
     const [loaded, setLoaded] = useState(false)
     const [themeId, setThemeId] = useState('')
-    const [themeName, setThemeName] = useState('default')
-    const [lightSquares, setLightSquares] = useState('#e2e4f5')
-    const [darkSquares, setDarkSqares] = useState('#4e5159')
+    const [themeName, setThemeName] = useState('')
+    const [lightSquares, setLightSquares] = useState('')
+    const [darkSquares, setDarkSqares] = useState('')
     const [pieceName, setPieceName] = useState('default')
     const [url, setUrl] = useState('')
-    const [background, setBackground] = useState(currentBackground)
+    const [background, setBackground] = useState('')
+    const [errors, setErrors] = useState([])
 
     useEffect(() => {
         dispatch(loadUserThemes()).then(themes => setThemes(themes)).then(() =>
@@ -62,7 +63,7 @@ export default function EditThemeForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setErrors([]);
+        setErrors([]);
 
         const newTheme = {
             themeId,
@@ -77,19 +78,21 @@ export default function EditThemeForm() {
 
         console.log("the new theme on submit is:", newTheme)
         const returnTheme = await dispatch(updateThemeById(newTheme))
-        // .catch(async (res) => {
-        //     const data = await res.json();
-        //     if (data && data.errors) setErrors(data.errors);
-        // });
-        // if(errors.length) return alert("something went wrong");
-
-        history.push(`/`)
-
+        if (returnTheme.errors) {
+            const errorArray = []
+            returnTheme.errors.forEach(err => {
+                const body = err.split(" : ")[1]
+                errorArray.push(body)
+            })
+            setErrors(errorArray)
+        } else {
+            history.push('/')
+        }
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor='theme-name'>Choose your theme:</label>
+            <label className="themed-form" htmlFor='theme-name'>Choose your theme:</label>
             <select
                 id='theme-id'
                 value={themeId}
