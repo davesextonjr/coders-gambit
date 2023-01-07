@@ -29,8 +29,8 @@ export default function UserGames() {
 
     if (!whiteGames.length) {
         return (
-            <div className="button-container">
-                <h2>You don't have any games currently in progress</h2>
+            <div className="themed-button-container">
+                <div className="themed-title">You don't have any games currently in progress</div>
                 <NewGame />
             </div>
         )

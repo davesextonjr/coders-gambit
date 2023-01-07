@@ -34,7 +34,15 @@ export default function EditThemeForm() {
     }
     const userThemes = Object.values(themes)
 
-    console.log(themes)
+    if (!userThemes.length){
+            return (
+                <div className="themed-button-container">
+                    <div className="themed-title">Trying to push the limits of creativity, huh?</div>
+                    <div className="themed-title">You still can't edit a theme if you haven't created one yet.</div>
+                    <div className="themed-button" onClick={() => history.push('/theme/add')}>Create a new theme</div>
+                </div>
+            )
+    }
 
 
 
