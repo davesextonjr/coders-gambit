@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { addTheme, setTheme } from "../../store/theme"
 import { useHistory } from "react-router-dom";
-import { loadUserThemes } from "../../store/userThemes";
+import { loadUserThemes, updateThemeById } from "../../store/userThemes";
 
 export default function EditThemeForm() {
     const currentBackground = useSelector(state => state.theme.background)
@@ -13,7 +13,7 @@ export default function EditThemeForm() {
 
     const [themes, setThemes] = useState(null)
     const [loaded, setLoaded] = useState(false)
-    const [themeId, setThemeId] = useState('1')
+    const [themeId, setThemeId] = useState('')
     const [themeName, setThemeName] = useState('default')
     const [lightSquares, setLightSquares] = useState('#e2e4f5')
     const [darkSquares, setDarkSqares] = useState('#4e5159')
@@ -57,6 +57,7 @@ export default function EditThemeForm() {
         // setErrors([]);
 
         const newTheme = {
+            themeId,
             userId,
             themeName,
             background,
@@ -67,7 +68,7 @@ export default function EditThemeForm() {
         }
 
         console.log(newTheme)
-        // const returnTheme = await dispatch(addTheme(newTheme))
+        const returnTheme = await dispatch(updateThemeById(newTheme))
         // .catch(async (res) => {
         //     const data = await res.json();
         //     if (data && data.errors) setErrors(data.errors);
@@ -78,13 +79,14 @@ export default function EditThemeForm() {
     }
 
     return (
-        <form onSubmit={() => console.log("submitted")}>
+        <form onSubmit={handleSubmit}>
             <label htmlFor='theme-name'>Choose your theme:</label>
             <select
-                id='theme-name'
+                id='theme-id'
                 value={themeId}
                 onChange={themeChangeHandler}
                 required >
+                        <option value="" disabled hidden>Which theme do you want to update</option>
                 {userThemes.map(theme => {
                     return(
                         <option key={`value-${theme.id}`} value={theme.id}>{theme.theme_name}</option>

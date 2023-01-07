@@ -44,7 +44,7 @@ def create_new_theme():
         db.session.add(theme)
         db.session.commit()
         return theme.to_dict()
-    return {'errors': validation_errors_to_error_messages}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @theme_routes.route('/update', methods=['PUT'])
@@ -70,4 +70,4 @@ def update_game():
        saved_theme = theme.to_dict()
        return saved_theme
 
-    return {'errors': validation_errors_to_error_messages}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

@@ -24,7 +24,7 @@ export default function UserThemes(){
 
     const clickHandler = e => {
         e.stopPropagation()
-        const theme = userThemes[e.target.id - 1]
+        const theme = themes[e.target.id]
         dispatch(setTheme(theme))
         console.log(theme)
     }
