@@ -50,7 +50,7 @@ input:active{
     border: 3px solid blue;
 }
 
-form button{
+button{
     height: 40px;
     background-color: rgb(50, 134, 213);
     color: white;
