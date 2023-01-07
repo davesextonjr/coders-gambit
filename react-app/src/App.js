@@ -14,6 +14,7 @@ import { loadUserGames } from './store/userGames';
 import AddThemeForm from './components/themes/AddThemeForm';
 import EditThemeForm from './components/themes/EditThemeForm';
 import UserThemes from './components/themes/UserThemes';
+import LandingPage from './components/landing-page/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,6 +52,9 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/home' exact={true} >
+          <LandingPage />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
         </ProtectedRoute>

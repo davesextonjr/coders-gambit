@@ -1,0 +1,10 @@
+.button-container{
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: 60%;
+    padding: 30px;
+    border: red 3px solid;
+    margin: auto;
+    margin-top: 10%;
+}
