@@ -88,7 +88,6 @@ export default function AddThemeForm() {
                 required >
                 <option value="dark">Dark</option>
                 <option value="light">Light</option>
-                <option value="sepia">Sepia</option>
                 <option value="transparent">transparent</option>
             </select>
             <label htmlFor="url">(Optional) Enter an image url to set a background image:</label>

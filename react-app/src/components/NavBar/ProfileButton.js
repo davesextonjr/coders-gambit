@@ -56,7 +56,6 @@ export default function ProfileButton() {
                 <div className="themes container">
                     <div onClick={clickHandler} id='light'>Light</div>
                     <div onClick={clickHandler} id='dark'>Dark</div>
-                    <div onClick={clickHandler} id='sepia'>Sepia</div>
                     <div onClick={clickHandler} id='transparent'>Transparent</div>
                     <div onClick={clickYourThemes} id='transparent'>Your Themes</div>
                     <div onClick={clickCreateTheme}>Create Theme</div>
