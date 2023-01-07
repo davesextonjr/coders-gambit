@@ -62,3 +62,13 @@ button{
     border: none;
     box-shadow: #262421 0px 0px 5px;
 }
+
+form a {
+    margin-top: 10px;
+    font-size: small;
+}
+
+.error {
+    font-size: small;
+    margin-bottom: 12px;
+}
