@@ -7,18 +7,19 @@ export default function AddThemeForm() {
     const currentBackground = useSelector(state => state.theme.background)
     const userId = useSelector(state => state.session.user.id)
     const history = useHistory()
-    const [themeName, setThemeName] = useState('default')
-    const [lightSquares, setLightSquares] = useState('#e2e4f5')
-    const [darkSquares, setDarkSqares] = useState('#4e5159')
+    const [themeName, setThemeName] = useState('')
+    const [lightSquares, setLightSquares] = useState('')
+    const [darkSquares, setDarkSqares] = useState('')
     const [pieceName, setPieceName] = useState('default')
     const [url, setUrl] = useState('')
-    const [background, setBackground] = useState(currentBackground)
+    const [background, setBackground] = useState('')
+    const [errors, setErrors] = useState([])
 
     const dispatch = useDispatch()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setErrors([]);
+        setErrors([]);
 
         const newTheme = {
             userId,
@@ -30,26 +31,39 @@ export default function AddThemeForm() {
             url
         }
 
-    console.log(newTheme)
+        console.log(newTheme)
         const returnTheme = await dispatch(addTheme(newTheme))
-        // .catch(async (res) => {
-        //     const data = await res.json();
-        //     if (data && data.errors) setErrors(data.errors);
-        // });
-        // if(errors.length) return alert("something went wrong");
-        history.push(`/`)
+        if (returnTheme.errors) {
+            const errorArray = []
+            returnTheme.errors.forEach(err => {
+                const body = err.split(" : ")[1]
+                errorArray.push(body)
+            })
+            setErrors(errorArray)
+        }
+
 
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="themed-form" onSubmit={handleSubmit}>
+            <div>
+                {errors.map((error, ind) => (
+                    <div className='error' key={ind}>{error}</div>
+                ))}
+            </div>
+
             <label htmlFor='theme-name'>Choose a theme name:</label>
             <input
                 id='theme-name'
                 type="text"
                 value={themeName}
                 onChange={(e) => setThemeName(e.target.value)}
+                placeholder='Whatever you choose keep it between 3 and 25 characters'
+                minLength='3'
+                maxLength='25'
                 required />
+
 
             <label htmlFor='light-squares'>Choose a light square color:</label>
             <input
@@ -67,7 +81,7 @@ export default function AddThemeForm() {
                 onChange={(e) => setDarkSqares(e.target.value)}
                 required />
 
-            <label htmlFor='piece-name'>Choose your pieces:</label>
+            {/* <label htmlFor='piece-name'>Choose your pieces:</label> */}
             {/* <select
                 id='piece-name'
                 value={pieceName}
@@ -91,14 +105,14 @@ export default function AddThemeForm() {
                 <option value="transparent">transparent</option>
             </select>
             <label htmlFor="url">(Optional) Enter an image url to set a background image:</label>
-                <input
-                    id="spot-url"
-                    type='url'
-                    placeholder="https://example.com"
-                    pattern="https://.*"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    ></input>
+            <input
+                id="spot-url"
+                type='url'
+                placeholder="https://example.com"
+                pattern="https://.*"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+            ></input>
             <button type="submit">Add Your Theme</button>
         </form>
     )
