@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { loadUserGames } from "../../store/userGames";
 import chessboardCreator from "../game/definitions/chessboard";
 import positionPlacer from "../game/definitions/postitionplacer";
 import { deleteUserGame } from "../../store/userGames";
+import NewGame from "./NewGame";
 
 export default function UserGames() {
     const dispatch = useDispatch()
@@ -22,9 +23,18 @@ export default function UserGames() {
             <h1>waiting for user</h1>
         )
     }
+
     const whiteGames = Object.values(user.user_white_games)
-    const blackGames = Object.values(user.user_black_games)
-    console.log(blackGames)
+    // const blackGames = Object.values(user.user_black_games) add this when multiplayer is enabled
+
+    if (!whiteGames.length) {
+        return (
+            <div className="button-container">
+                <h2>You don't have any games currently in progress</h2>
+                <NewGame />
+            </div>
+        )
+    }
 
     let chessboard = chessboardCreator() //make the 2d array
 
