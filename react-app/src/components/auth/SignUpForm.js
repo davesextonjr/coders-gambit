@@ -19,6 +19,8 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(["Passwords must match"])
     }
   };
 
@@ -55,17 +57,23 @@ const SignUpForm = () => {
           <input
             type='text'
             name='username'
+            placeholder="don't over-think but do use at least 3 characters"
             onChange={updateUsername}
             value={username}
+            minLength="3"
+            maxLength="25"
+            required
           ></input>
         </div>
         <div className='form-input'>
           <label>Email</label>
           <input
-            type='text'
+            type='email'
             name='email'
+            placeholder='to use junk-email or not...hmmm'
             onChange={updateEmail}
             value={email}
+            required
           ></input>
         </div>
         <div className='form-input'>
@@ -73,8 +81,11 @@ const SignUpForm = () => {
           <input
             type='password'
             name='password'
+            placeholder='password must be at least 6 characters'
             onChange={updatePassword}
             value={password}
+            minLength='6'
+            required
           ></input>
         </div>
         <div className='form-input'>
@@ -82,9 +93,11 @@ const SignUpForm = () => {
           <input
             type='password'
             name='repeat_password'
+            placeholder='see if you can remeber what you just typed'
             onChange={updateRepeatPassword}
             value={repeatPassword}
             required={true}
+            minLength="6"
           ></input>
         </div>
         <button type='submit'>REGISTER</button>
