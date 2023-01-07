@@ -68,7 +68,7 @@ export default function AddThemeForm() {
                 required />
 
             <label htmlFor='piece-name'>Choose your pieces:</label>
-            <select
+            {/* <select
                 id='piece-name'
                 value={pieceName}
                 onChange={(e) => setPieceName(e.target.value)}
@@ -78,7 +78,7 @@ export default function AddThemeForm() {
                 <option value="modern">"Modern pieces coiming soon"</option>
                 <option value="stone">"Stone pieces coming soon"</option>
                 <option value="pretty">"Pretty pieces coming soon"</option>
-            </select>
+            </select> */}
 
             <label htmlFor='background-name'>Choose your background:</label>
             <select

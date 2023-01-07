@@ -46,7 +46,7 @@ export default function EditThemeForm() {
         setThemeName(theme.theme_name)
         setLightSquares(theme.light_squares)
         setDarkSqares(theme.dark_squares)
-        setPieceName(theme.pieceName)
+        // setPieceName(theme.pieceName)
         setUrl(theme.url)
         setBackground(theme.background)
     }
@@ -67,13 +67,14 @@ export default function EditThemeForm() {
             url
         }
 
-        console.log(newTheme)
+        console.log("the new theme on submit is:", newTheme)
         const returnTheme = await dispatch(updateThemeById(newTheme))
         // .catch(async (res) => {
         //     const data = await res.json();
         //     if (data && data.errors) setErrors(data.errors);
         // });
         // if(errors.length) return alert("something went wrong");
+
         history.push(`/`)
 
     }
@@ -117,8 +118,8 @@ export default function EditThemeForm() {
                 onChange={(e) => setDarkSqares(e.target.value)}
                 required />
 
-            <label htmlFor='piece-name'>Choose your pieces:</label>
-            <select
+            {/* <label htmlFor='piece-name'>Choose your pieces:</label> */}
+            {/* <select
                 id='piece-name'
                 value={pieceName}
                 onChange={(e) => setPieceName(e.target.value)}
@@ -128,7 +129,7 @@ export default function EditThemeForm() {
                 <option value="modern">"Modern pieces coiming soon"</option>
                 <option value="stone">"Stone pieces coming soon"</option>
                 <option value="pretty">"Pretty pieces coming soon"</option>
-            </select>
+            </select> */}
 
             <label htmlFor='background-name'>Choose your background:</label>
             <select
