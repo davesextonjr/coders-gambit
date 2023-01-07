@@ -11,6 +11,7 @@ export default function MainPage(){
 
     return (
         <div className="main-page" data-board={theme} >
+
             <NewGame />
             <UserGames userGames={userGames} />
         </div>
