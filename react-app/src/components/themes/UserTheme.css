@@ -3,7 +3,8 @@
 }
 
 .themed-form label{
-    font-size: small;
+    font-size: 15px;
+    color: rgb(231, 222, 222);
 
 }
 .themed-form input,
@@ -12,4 +13,14 @@
     color: var(--form-color);
     margin: 10px 0px;
     height: 35px;
+    border: none;
+    padding: 3px;
+    border-radius: 5px
+}
+
+#light-squares,
+#dark-squares
+{
+    width: 35px;
+    margin-left: 20px;
 }

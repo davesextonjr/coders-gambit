@@ -16,7 +16,12 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      const errorArray = []
+      data.forEach(err => {
+        const body = err.split(" : ")[1]
+        errorArray.push(body)
+      })
+      setErrors(errorArray);
     }
   };
 
