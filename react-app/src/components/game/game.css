@@ -1,13 +1,28 @@
 .background {
 
     height: 100%;
+    width: 100%;
     border: rgba(0, 0, 0, 0) solid 1px;
+    display: flex;
 }
 
+.themed-container.themed-button-container{
+    /* height: 90%;
+    width: 65%;
+    margin-top: 1%; */
+    margin-top: 2%;
+
+}
+
+.game-button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .chessboard {
-    height: 85%;
-    background-color: antiquewhite;
-    width: 50%;
+    width: 90%;
+    height: 90%;
     margin: auto;
     margin-top: 3%;
     display: grid;
@@ -26,12 +41,12 @@
 
 .squares{
 
-    border: brown solid 1px;
+    border: rgba(0, 0, 0, 0.185) solid 1px;
     height: 100%;
     width: 100%;
 }
 
-.squares:nth-child(16n+1),
+/* .squares:nth-child(16n+1),
 .squares:nth-child(16n+3),
 .squares:nth-child(16n+5),
 .squares:nth-child(16n+7),
@@ -39,8 +54,8 @@
 .squares:nth-child(16n+12),
 .squares:nth-child(16n+14),
 .squares:nth-child(16n+16){
-    background-color: darkgoldenrod;
-}
+    background-color: #b8860b;
+} */
 
 
 

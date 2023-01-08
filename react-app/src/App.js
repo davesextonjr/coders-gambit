@@ -9,10 +9,13 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Game from './components/game/Game';
 import MainPage from './components/main-page/MainPage';
+import UserGames from './components/main-page/UserGames';
 import { authenticate } from './store/session';
 import { loadUserGames } from './store/userGames';
 import AddThemeForm from './components/themes/AddThemeForm';
+import EditThemeForm from './components/themes/EditThemeForm';
 import UserThemes from './components/themes/UserThemes';
+import LandingPage from './components/landing-page/LandingPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -44,12 +47,20 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
+
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
+        </ProtectedRoute>
+
+        <ProtectedRoute path='/games' exact={true} >
+          <UserGames />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <Route path='/home' exact={true} >
+          <LandingPage />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
         </ProtectedRoute>
@@ -58,6 +69,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/theme/add'>
           <AddThemeForm />
+        </ProtectedRoute>
+        <ProtectedRoute path='/theme/edit'>
+          <EditThemeForm />
         </ProtectedRoute>
         <ProtectedRoute path='/theme'>
           <UserThemes />

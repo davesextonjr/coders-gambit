@@ -6,34 +6,49 @@ import ProfileButton from './ProfileButton';
 import './NavBar.css'
 import { useSelector } from 'react-redux';
 
-const NavBar = () => {
 
+
+const NavBar = () => {
+  const user = useSelector(state => state.session.user)
 
   return (
-    <nav>
 
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
+    <>
+      {user ?
+      <nav>
 
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Sign In
-          </NavLink>
+        <NavLink to='/' exact={true} activeClassName='active'>
+          Coder's Gambit
+        </NavLink>
 
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Register
+        <NavLink to='/games' exact={true} activeClassName='active'>
+          Your Games
+        </NavLink>
 
-          </NavLink>
+        <NavLink to='/theme/add' exact={true} activeClassName='active'>
+          Create New Theme
+        </NavLink>
 
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
+        <NavLink to='/theme/edit' exact={true} activeClassName='active'>
+          Edit Your Themes
+        </NavLink>
 
-          <LogoutButton />
+        <ProfileButton />
 
-          <ProfileButton />
+        <LogoutButton />
 
-    </nav>
+      </nav>
+      :
+      <div></div>
+
+    }
+
+    </>
+
+
+
+
+
   );
 }
 

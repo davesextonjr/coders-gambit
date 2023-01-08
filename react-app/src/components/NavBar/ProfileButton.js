@@ -31,7 +31,7 @@ export default function ProfileButton() {
         // console.log(e.target.id)
         let url = ""
         if (e.target.id === "transparent") url = "https://lichess1.org/assets/images/background/landscape.jpg"
-        dispatch(setTheme({background: e.target.id, url: url}))
+        dispatch(setTheme({background: e.target.id, url: url, light_squares:"#faebd7", dark_squares:"#b8860b"}))
     }
 
     const clickYourThemes = e => {
@@ -56,7 +56,6 @@ export default function ProfileButton() {
                 <div className="themes container">
                     <div onClick={clickHandler} id='light'>Light</div>
                     <div onClick={clickHandler} id='dark'>Dark</div>
-                    <div onClick={clickHandler} id='sepia'>Sepia</div>
                     <div onClick={clickHandler} id='transparent'>Transparent</div>
                     <div onClick={clickYourThemes} id='transparent'>Your Themes</div>
                     <div onClick={clickCreateTheme}>Create Theme</div>

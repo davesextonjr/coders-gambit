@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './form.css'
 
@@ -9,6 +9,7 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
+  const history = useHistory()
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
@@ -37,16 +38,17 @@ const LoginForm = () => {
         <div className='form-title'>Sign in</div>
         <div>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div className='error' key={ind}>{error}</div>
           ))}
         </div>
         <div className='form-input'>
           <label htmlFor='email'>Email</label>
           <input
             name='email'
-            type='text'
+            type='email'
             value={email}
             onChange={updateEmail}
+            required
           />
         </div>
         <div className='form-input'>
@@ -56,9 +58,14 @@ const LoginForm = () => {
             type='password'
             value={password}
             onChange={updatePassword}
+            minLength="6"
+            required
           />
         </div>
         <button type='submit'>SIGN IN</button>
+        <NavLink to='/sign-up' activeClassName='active'>
+          Not registered? Register Here.
+        </NavLink>
       </form>
     </div>
   );

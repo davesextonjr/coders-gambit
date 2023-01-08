@@ -26,7 +26,7 @@ export default function NewGame(){
 
     return(
         <>
-            <div className="start-new-game" onClick={clickHandler}>
+            <div className="start-new-game themed-button" onClick={clickHandler}>
                 Start a New Game
             </div>
         </>

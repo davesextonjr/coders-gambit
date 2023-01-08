@@ -120,7 +120,8 @@ export default function currentGameReducer(state = initialState, action){
             newState.whiteUser = action.game.white_id
             newState.blackUser = action.game.black_id
             newState.position = {...action.position}
-            newState.moves = [...state.moves, action.moves]
+            newState.moves = [...action.moves]
+            if(newState.moves.length && Array.isArray(newState[0])) newState.moves.shift() //this is to get rid of the empty array as starting data
             return newState
         }
         default: return state

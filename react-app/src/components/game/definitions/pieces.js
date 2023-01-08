@@ -1,6 +1,3 @@
-import "../game.css"
-
-//
 
 export const pieces = {
 
