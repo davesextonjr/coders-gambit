@@ -18,7 +18,7 @@ const NavBar = () => {
       <nav>
 
         <NavLink to='/' exact={true} activeClassName='active'>
-          Coder's Gambit
+          Home
         </NavLink>
 
         <NavLink to='/games' exact={true} activeClassName='active'>
