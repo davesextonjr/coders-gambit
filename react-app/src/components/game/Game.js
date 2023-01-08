@@ -5,7 +5,7 @@ import GameBoard from "./GameBoard";
 import GamePlay from "./GamePlay";
 import { deleteUserGame } from "../../store/userGames";
 import UndoMove from "./UndoMove";
-import "./Game.css"
+import "./game.css"
 
 export default function Game() {
     const currentGameId = useSelector(state => state.currentGame.gameId)
