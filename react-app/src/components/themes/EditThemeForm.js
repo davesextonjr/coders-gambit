@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { addTheme, setTheme } from "../../store/theme"
+import { addTheme, deleteUserTheme, setTheme } from "../../store/theme"
 import { useHistory } from "react-router-dom";
 import { loadUserThemes, updateThemeById } from "../../store/userThemes";
 
@@ -60,6 +60,13 @@ export default function EditThemeForm() {
         setBackground(theme.background)
     }
 
+    const handleDeleteClick = e => {
+        e.preventDefault()
+        if(window.confirm("Are you sure you want to delete this theme?")) {
+            dispatch(deleteUserTheme(themeId))
+            history.push('/')
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -163,6 +170,7 @@ export default function EditThemeForm() {
             ></input>
             <button onClick={() => history.push('/')}>Cancel</button>
             <button type="submit">Update Your Theme</button>
+            {themeId && <button onClick={handleDeleteClick}>Delete Your Theme</button>}
         </form>
     )
 }

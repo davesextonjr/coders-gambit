@@ -22,6 +22,15 @@ def get_user_themes():
     return user_themes
 
 
+@theme_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_game(id):
+    theme = Theme.query.get(id)
+    db.session.delete(theme)
+    db.session.commit()
+    return {'Message': 'Game successfully deleted'}
+
+
 
 @theme_routes.route('/new', methods=['POST'])
 @login_required

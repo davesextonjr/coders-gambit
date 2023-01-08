@@ -1,5 +1,6 @@
 //Definitions
 const SET_THEME='/theme/SET_THEME'
+const DELETE_THEME='/theme/DELETE_THEME'
 
 
 //Actions
@@ -11,6 +12,11 @@ export const setTheme = ({background, url, theme_name, light_squares, dark_squar
     light_squares,
     dark_squares,
     piece_name,
+})
+
+const deleteTheme = themeId => ({
+    type: DELETE_THEME,
+    themeId
 })
 
 
@@ -54,6 +60,17 @@ export const addTheme = theme => async dispatch => {
 }
 
 
+export const deleteUserTheme = themeId => async dispatch => {
+    const response = await fetch(`/api/theme/${themeId}`, {
+        method: 'DELETE'
+    })
+    if(response.ok){
+        dispatch(deleteTheme(themeId))
+    }
+    return response.json()
+}
+
+
 
 //Initial State Definition
 const initialState = {background: "dark", url:"", themeName:"", lightSquares:"", darkSquares:"", pieceName:""}
@@ -71,7 +88,9 @@ export default function themeReducer(state = initialState, action){
                 pieceName: action.piece_name
             }
         }
-
+        case DELETE_THEME:{
+            return initialState
+        }
         default: return state
     }
 }
