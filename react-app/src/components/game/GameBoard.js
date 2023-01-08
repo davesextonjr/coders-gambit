@@ -61,7 +61,7 @@ export default function GameBoard() {
             backgroundColor = lightSquares
         }
 
-        console.log(square, backgroundColor)
+
 
         return (
             <div

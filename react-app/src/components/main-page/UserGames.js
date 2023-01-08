@@ -13,6 +13,8 @@ export default function UserGames() {
     const [loaded, setLoaded] = useState(false)
     const history = useHistory()
     const userGames = useSelector(state => state.userGames.user_white_games)
+    const lightSquares = useSelector(state => state.theme.lightSquares)
+    const darkSquares = useSelector(state => state.theme.darkSquares)
     useEffect(() => {
         dispatch(loadUserGames()).then(user => setUser(user)).then(() =>
             setLoaded(true)
@@ -39,11 +41,22 @@ export default function UserGames() {
     let chessboard = chessboardCreator() //make the 2d array
 
     chessboard = chessboard.map((square) => {
+        let backgroundColor = ""
+        const darkOdds = "a c e g"
+        if (darkOdds.includes(square[0]) && square[1] % 2 !==0 ||
+            !darkOdds.includes(square[0]) && square[1] % 2 ===0
+        ){
+            backgroundColor = darkSquares
+        } else {
+            backgroundColor = lightSquares
+        }
+
         return (
             <div
                 id={square}
                 key={`${square}`}
                 className={`squares ${square}`}
+                style={{backgroundColor: backgroundColor}}
             />
         )
     })
