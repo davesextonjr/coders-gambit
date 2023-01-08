@@ -11,7 +11,7 @@ import chessboardCreator from "./definitions/chessboard";
 
 export default function GameBoard() {
     const dispatch = useDispatch()
-    const chessboard = chessboardCreator()
+    let chessboard = chessboardCreator()
 
     //TODO: Research if it would be better to use one less useSelctor.
     //I chose to make two variables here from the currentGame slice of state
@@ -48,22 +48,36 @@ export default function GameBoard() {
         dispatch(updateGame(game))
     }
 
+    chessboard = chessboard.map((square) => {
+        let backgroundColor = ""
+        const darkOdds = "a c e g"
+        if (darkOdds.includes(square[0]) && square[1] % 2 !==0 ||
+            !darkOdds.includes(square[0]) && square[1] % 2 ===0
+        ){
+            console.log(square, "is dark")
+        } else {
+            console.log(square, "is light")
+        }
+
+
+        return (
+            <div
+                id={square}
+                key={square}
+                // style={styles}
+                className={`squares ${square}`}
+                onDragOver={dragOverHandler}
+                onDrop={dropHandler}
+            >
+
+            </div>
+        )
+    })
+
+
     return (
         <>
-            {chessboard.map((square) => {
-                return (
-                    <div
-                        id={square}
-                        key={square}
-                        className={`squares ${square}`}
-                        onDragOver={dragOverHandler}
-                        onDrop={dropHandler}
-                    >
-
-                    </div>
-                )
-            })
-            }
+            {chessboard}
         </>
     )
 }
