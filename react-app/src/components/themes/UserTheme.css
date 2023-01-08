@@ -1,0 +1,15 @@
+.themed-form{
+    border-radius: 3px;
+}
+
+.themed-form label{
+    font-size: small;
+
+}
+.themed-form input,
+.themed-form select{
+    background-color: var(--form-background);
+    color: var(--form-color);
+    margin: 10px 0px;
+    height: 35px;
+}

@@ -1,6 +1,6 @@
 .form-background {
 
-    height: 100%;
+    height: 100vh;
     border: 1px solid black;
 }
 
@@ -10,7 +10,7 @@ form {
     color: rgb(170, 170, 170);
     width: 400px;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 5%;
     padding: 30px 40px;
     display: flex;
     flex-direction: column;
@@ -34,23 +34,25 @@ label {
 
 }
 
-input{
+input,
+input:default{
     height: 40px;
     background-color: #262421;
     margin-top: 10px;
     border-radius: 3px;
+    color: rgb(170, 170, 170);
+
+
 }
 
-input:empty{
-    border: 1px solid red;
-}
+
 
 input:focus,
 input:active{
-    border: 3px solid blue;
+    border: 1px solid rgb(50, 134, 213);
 }
 
-form button{
+button{
     height: 40px;
     background-color: rgb(50, 134, 213);
     color: white;
@@ -59,4 +61,14 @@ form button{
     margin-top: 30px;
     border: none;
     box-shadow: #262421 0px 0px 5px;
+}
+
+form a {
+    margin-top: 10px;
+    font-size: small;
+}
+
+.error {
+    font-size: small;
+    margin-bottom: 12px;
 }

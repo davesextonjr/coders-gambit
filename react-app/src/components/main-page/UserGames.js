@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { loadUserGames } from "../../store/userGames";
 import chessboardCreator from "../game/definitions/chessboard";
 import positionPlacer from "../game/definitions/postitionplacer";
+import { deleteUserGame } from "../../store/userGames";
+import NewGame from "./NewGame";
 
 export default function UserGames() {
     const dispatch = useDispatch()
     const [user, setUser] = useState(null)
     const [loaded, setLoaded] = useState(false)
     const history = useHistory()
+    const userGames = useSelector(state => state.userGames.user_white_games)
     useEffect(() => {
         dispatch(loadUserGames()).then(user => setUser(user)).then(() =>
             setLoaded(true)
@@ -20,9 +23,18 @@ export default function UserGames() {
             <h1>waiting for user</h1>
         )
     }
+
     const whiteGames = Object.values(user.user_white_games)
-    const blackGames = Object.values(user.user_black_games)
-    console.log(blackGames)
+    // const blackGames = Object.values(user.user_black_games) add this when multiplayer is enabled
+
+    if (!whiteGames.length) {
+        return (
+            <div className="themed-button-container">
+                <div className="themed-title">You don't have any games currently in progress</div>
+                <NewGame />
+            </div>
+        )
+    }
 
     let chessboard = chessboardCreator() //make the 2d array
 
@@ -30,35 +42,28 @@ export default function UserGames() {
         return (
             <div
                 id={square}
-                key={square}
+                key={`${square}`}
                 className={`squares ${square}`}
-
             />
         )
     })
 
-
-
-    // const gameState = []
-    // for (const square in currentPosition){
-    //     const piece = currentPosition[square]
-    //     if(piece){
-    //         gameState.push(<img src={pieces[piece].image} key={square} name={piece} id={square} className={square} draggable={true} onDragStart={dragStartHandler}/>)
-    //     }
-    // }
-
-
-
     return (
-        <div className="user-games">
-            {whiteGames.map(game => {
-                return(
-                    <div className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
-                    {chessboard}
-                    {positionPlacer(game.current_board_state)}
-                    </div>
-                )
-            })}
+        <div className="themed-button-container user-games-outer-container">
+            <div className="themed-title">Your Current Games</div>
+            <div className="themed-sub-title">Click on a game to continue playing or to delete the game.</div>
+            <div className="user-games-container">
+                {whiteGames.map((game) => {
+                    return (
+
+                            <div key={`user-white-game${game.id}`} className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
+                                {chessboard}
+                                {positionPlacer(game.current_board_state)}
+                            </div>
+
+                    )
+                })}
+            </div>
         </div>
     )
 }

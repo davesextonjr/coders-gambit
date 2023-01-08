@@ -36,8 +36,16 @@ def get_game_by_id(id):
     game = Game.query.get(id)
     return game.to_dict()
 
+@game_routes.route('/<id>', methods=['DELETE'])
+@login_required
+def delete_game(id):
+    game = Game.query.get(id)
+    db.session.delete(game)
+    db.session.commit()
+    return {'Message': 'Game successfully deleted'}
 
 @game_routes.route('/new', methods=['POST'])
+@login_required
 def create_new_game():
     """
     Creates new game
@@ -54,12 +62,13 @@ def create_new_game():
         db.session.add(game)
         db.session.commit()
         return game.to_dict()
-    return {'errors': validation_errors_to_error_messages}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 @game_routes.route('/update', methods=['PUT'])
+@login_required
 def update_game():
     """
-    Updates the Game
+    Updates one of the users current games
     """
     form = UpdateGameForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -72,4 +81,4 @@ def update_game():
        saved_game = game.to_dict()
        return saved_game
 
-    return {'errors': validation_errors_to_error_messages}
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

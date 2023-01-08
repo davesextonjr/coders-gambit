@@ -4,31 +4,77 @@
     width: 100%;
     height: 100%;
 }
-.start-new-game {
+.start-new-game,
+.themed-button{
     text-align: center;
-    width: fit-content;
+    width: 75%;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 2%;
     font-size: 12px;
     background-color: rgb(76, 71, 71);
     padding: 6px 36px;
     border-radius: 8px;
 }
 
-.start-new-game:hover {
+.start-new-game:hover,
+.themed-button:hover {
     cursor: pointer;
+    box-shadow: 0 0 12px black;
 
+}
+
+.themed-button:disabled{
+    color: rgba(0, 0, 0, 0.774);
+    box-shadow: none;
+}
+
+.themed-button-container{
+    text-shadow: 1px 1px black;
+    color: rgb(236, 240, 243);
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    justify-content: center;
+    background-color: rgba(128, 128, 128, 0.339);
+    border-radius: 12px;
+    /* height: 50%; */
+    width: 50%;
+    padding: 3%;
+    text-align: center;
+
+    margin: auto;
+    margin-top: 70px;
+}
+
+.user-games-container{
+    display: grid;
+    grid-auto-flow: row;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    width: 85%;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 12px;
+}
+
+.themed-button-container.user-games-outer-container{
+    width: 80%;
 }
 
 .user-games {
     display: flex;
     gap: 6px;
-    width: 75%;
+    width: 50%;
     height: 75%;
     margin: auto;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
+}
+
+.user-games:hover{
+    overflow: auto;
 }
 
 .user-games .chessboard{

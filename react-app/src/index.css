@@ -2,9 +2,11 @@
     font-family: 'Noto Sans', sans-serif;
     box-sizing: border-box;
     margin: 0;
-    width: 100%;
-
 }
+html {
+    background-color: var(--background);
+}
+
 
 :root {
     height: 100%;
@@ -16,19 +18,16 @@
     height: 100%;
 }
 
-html {
-    height: 100%;
-}
 
 body {
     height: 100%;
 }
 
 .main {
-    height: 100%;
     background-color: var(--background);
     color: var(--color);
     height: 100%;
+    background-size: cover;
 }
 
 [data-board="light"]{
@@ -45,6 +44,8 @@ body {
 [data-board="dark"]{
     --background: black;
     --box-background: rgb(93, 91, 91);
+    --form-background:rgb(27, 27, 27);
+    --form-color: gray;
     --color: rgb(192, 182, 182);
     --hover: white;
 }

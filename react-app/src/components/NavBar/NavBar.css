@@ -2,10 +2,14 @@ nav {
     /* background-color: black; */
     display: flex;
     justify-content: space-between;
+    padding: 0 10px;
+
+
 }
 
 nav div{
     color: rgb(170, 170, 170);
+
 }
 
 nav div:hover{
@@ -15,6 +19,7 @@ nav div:hover{
 
 a {
     text-decoration: none;
+    font-size: medium;
     color: rgb(170, 170, 170);
 }
 
@@ -22,15 +27,27 @@ a:hover{
     color: rgb(252, 249, 249);
 }
 
-.profile-container {
-    background-color: var(--box-background);
-    color: var(--color);
+.container {
+
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
     position: absolute;
-    top: 40px;
-    right: 0px;
+    top: 35px;
+    right: 15px;
     width: 200px;
+    height: 200px;
+    overflow: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(95, 94, 94, 0.684);
 }
 
-.profile-container div{
+.container div{
     color: var(--color);
+    padding: 3px;
+}
+
+.user-themes{
+    z-index: 1;
 }
