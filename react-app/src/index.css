@@ -27,6 +27,7 @@ body {
     background-color: var(--background);
     color: var(--color);
     height: 100%;
+    background-size: cover;
 }
 
 [data-board="light"]{
