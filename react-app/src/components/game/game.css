@@ -1,13 +1,17 @@
 .background {
-    position: absolute;
+
     height: 100%;
+    width: 100%;
     border: rgba(0, 0, 0, 0) solid 1px;
     display: flex;
 }
 
 .themed-container.themed-button-container{
-    height: 90%;
+    /* height: 90%;
     width: 65%;
+    margin-top: 1%; */
+    margin-top: 2%;
+
 }
 
 .game-button-container {
