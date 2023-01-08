@@ -18,6 +18,8 @@ export default function GameBoard() {
     const start = useSelector(state => state.move)
     const currentPosition = useSelector(state => state.currentGame.position)
     const currentGame = useSelector(state => state.currentGame)
+    const lightSquares = useSelector(state => state.theme.lightSquares)
+    const darkSquares = useSelector(state => state.theme.darkSquares)
 
     //TODO: Refactor into more modular code.
     // I still have room to grow in passing context.
@@ -54,17 +56,18 @@ export default function GameBoard() {
         if (darkOdds.includes(square[0]) && square[1] % 2 !==0 ||
             !darkOdds.includes(square[0]) && square[1] % 2 ===0
         ){
-            console.log(square, "is dark")
+            backgroundColor = darkSquares
         } else {
-            console.log(square, "is light")
+            backgroundColor = lightSquares
         }
 
+        console.log(square, backgroundColor)
 
         return (
             <div
                 id={square}
                 key={square}
-                // style={styles}
+                style={{background-color: backgroundColor}}
                 className={`squares ${square}`}
                 onDragOver={dragOverHandler}
                 onDrop={dropHandler}

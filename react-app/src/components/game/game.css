@@ -21,7 +21,7 @@
 
 
 .chessboard {
-    background-color: antiquewhite;
+    background-color: #faebd7;
     width: 90%;
     height: 90%;
     margin: auto;
@@ -55,7 +55,7 @@
 .squares:nth-child(16n+12),
 .squares:nth-child(16n+14),
 .squares:nth-child(16n+16){
-    background-color: darkgoldenrod;
+    background-color: #b8860b;
 }
 
 
