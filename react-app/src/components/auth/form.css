@@ -26,7 +26,8 @@ form {
 .form-input{
     margin: 20px 0px;
     font-size: small;
-    font-weight: 600;
+
+
 }
 
 label {
@@ -41,6 +42,7 @@ input:default{
     margin-top: 10px;
     border-radius: 3px;
     color: rgb(170, 170, 170);
+    width:100%
 
 
 }
@@ -60,7 +62,12 @@ button{
     border-radius: 3px;
     margin-top: 30px;
     border: none;
-    box-shadow: #262421 0px 0px 5px;
+    box-shadow: #262421 0px 0px 3px;
+}
+
+button:hover{
+    box-shadow: #000000 0px 0px 7px;
+    background-color: rgb(90, 170, 244);
 }
 
 form a {
