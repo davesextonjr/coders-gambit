@@ -1,12 +1,13 @@
 .background {
-
+    position: absolute;
     height: 100%;
     border: rgba(0, 0, 0, 0) solid 1px;
+    display: flex;
 }
 
 .themed-container.themed-button-container{
-    height: 80vh;
-    width: 80%;
+    height: 90%;
+    width: 65%;
 }
 
 .game-button-container {
@@ -17,7 +18,8 @@
 
 .chessboard {
     background-color: antiquewhite;
-    width: 100%;
+    width: 90%;
+    height: 90%;
     margin: auto;
     margin-top: 3%;
     display: grid;
