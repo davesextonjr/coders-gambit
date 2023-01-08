@@ -6,9 +6,9 @@ class NewGameForm(FlaskForm):
     white_id = IntegerField('white_id', validators=[DataRequired()])
     black_id = IntegerField('black_id', validators=[DataRequired()])
     current_board_state = StringField('current_board_state', validators=[DataRequired()])
-    moves = StringField(5000)
+    moves = StringField(100000)
 class UpdateGameForm(FlaskForm):
     white_id = IntegerField('white_id', validators=[DataRequired()])
     black_id = IntegerField('black_id', validators=[DataRequired()])
     current_board_state = StringField('current_board_state', validators=[DataRequired()])
-    moves = StringField(5000)
+    moves = StringField(100000)

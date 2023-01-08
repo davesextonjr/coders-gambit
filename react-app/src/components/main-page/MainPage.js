@@ -3,6 +3,7 @@ import NewGame from "./NewGame";
 import "./mainPage.css"
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Footer from "../footer/Footer";
 
 export default function MainPage() {
 
@@ -20,7 +21,7 @@ export default function MainPage() {
                 <div className="themed-button" onClick={() => history.push('/theme/add')}>Create a new theme</div>
                 <div className="themed-button" onClick={() => history.push('/theme/edit')}>Edit your themes</div>
             </div>
-
+        <Footer />
         </div>
     )
 }
