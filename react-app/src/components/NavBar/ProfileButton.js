@@ -31,7 +31,7 @@ export default function ProfileButton() {
         // console.log(e.target.id)
         let url = ""
         if (e.target.id === "transparent") url = "https://lichess1.org/assets/images/background/landscape.jpg"
-        dispatch(setTheme({background: e.target.id, url: url}))
+        dispatch(setTheme({background: e.target.id, url: url, light_squares:"#faebd7", dark_squares:"#b8860b"}))
     }
 
     const clickYourThemes = e => {

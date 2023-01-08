@@ -96,12 +96,13 @@ export default function AddThemeForm() {
                 <option value="pretty">"Pretty pieces coming soon"</option>
             </select> */}
 
-            <label htmlFor='background-name'>Choose your background:</label>
+            <label htmlFor='background-name'>Choose your theme style:</label>
             <select
                 id='background-name'
                 value={background}
                 onChange={(e) => setBackground(e.target.value)}
                 required >
+                <option value="" disabled hidden>choose dark, light, or transparent</option>
                 <option value="dark">Dark</option>
                 <option value="light">Light</option>
                 <option value="transparent">transparent</option>
@@ -115,7 +116,7 @@ export default function AddThemeForm() {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
             ></input>
-            <button type="submit">Add Your Theme</button>
+            <button className="themed-button" type="submit">Add Your Theme</button>
         </form>
     )
 }

@@ -44,6 +44,8 @@ body {
 [data-board="dark"]{
     --background: black;
     --box-background: rgb(93, 91, 91);
+    --form-background:rgb(27, 27, 27);
+    --form-color: gray;
     --color: rgb(192, 182, 182);
     --hover: white;
 }

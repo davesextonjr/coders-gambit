@@ -67,7 +67,7 @@ export default function GameBoard() {
             <div
                 id={square}
                 key={square}
-                style={{background-color: backgroundColor}}
+                style={{backgroundColor: backgroundColor}}
                 className={`squares ${square}`}
                 onDragOver={dragOverHandler}
                 onDrop={dropHandler}

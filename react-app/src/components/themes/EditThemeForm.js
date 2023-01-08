@@ -98,7 +98,7 @@ export default function EditThemeForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="themed-form" onSubmit={handleSubmit}>
             <label className="themed-form" htmlFor='theme-name'>Choose your theme:</label>
             <select
                 id='theme-id'
@@ -168,9 +168,9 @@ export default function EditThemeForm() {
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
             ></input>
-            <button onClick={() => history.push('/')}>Cancel</button>
-            <button type="submit">Update Your Theme</button>
-            {themeId && <button onClick={handleDeleteClick}>Delete Your Theme</button>}
+            <button className="themed-button" onClick={() => history.push('/')}>Cancel</button>
+            <button className="themed-button" type="submit">Update Your Theme</button>
+            {themeId && <button className="themed-button" onClick={handleDeleteClick}>Delete Your Theme</button>}
         </form>
     )
 }
