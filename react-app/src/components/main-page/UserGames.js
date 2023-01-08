@@ -61,21 +61,10 @@ export default function UserGames() {
                                         id={square}
                                         key={`${square}-${i}`}
                                         className={`squares ${square}`}
-
                                     />
                                 )
                             })}
                             {positionPlacer(game.current_board_state)}
-                        </div>
-                        <div className="button-container">
-                            <button onClick={() => history.push(`/game/${game.id}`)}>Continue Game</button>
-                            <button userGames={userGames} onClick={() => {
-                                if (window.confirm("Are you sure you want to delete this game? It will be deleted for both players.")) {
-                                    dispatch(deleteUserGame(game.id))
-                                }
-                            }
-
-                            }>Delete Game</button>
                         </div>
                     </div>
                 )
