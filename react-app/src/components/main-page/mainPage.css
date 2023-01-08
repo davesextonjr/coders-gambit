@@ -45,6 +45,19 @@
     margin-top: 70px;
 }
 
+.user-games-container{
+    display: grid;
+    grid-auto-flow: row;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    width: 85%;
+    overflow: hidden;
+}
+
+.themed-button-container.user-games-outer-container{
+    width: 80%;
+}
+
 .user-games {
     display: flex;
     gap: 6px;

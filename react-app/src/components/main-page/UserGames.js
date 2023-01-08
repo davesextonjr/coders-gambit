@@ -38,37 +38,32 @@ export default function UserGames() {
 
     let chessboard = chessboardCreator() //make the 2d array
 
-    // chessboard = chessboard.map((square, i) => {
-    //     return (
-    //         <div
-    //             id={square}
-    //             key={`${square}-${i}`}
-    //             className={`squares ${square}`}
-
-    //         />
-    //     )
-    // })
+    chessboard = chessboard.map((square) => {
+        return (
+            <div
+                id={square}
+                key={`${square}`}
+                className={`squares ${square}`}
+            />
+        )
+    })
 
     return (
-        <div className="user-games">
-            {whiteGames.map((game, i) => {
-                return (
-                    <div key={`user-white-game${game.id}`} classname='chessboard-container'>
-                        <div className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
-                            {chessboard.map((square) => {
-                                return (
-                                    <div
-                                        id={square}
-                                        key={`${square}-${i}`}
-                                        className={`squares ${square}`}
-                                    />
-                                )
-                            })}
-                            {positionPlacer(game.current_board_state)}
-                        </div>
-                    </div>
-                )
-            })}
+        <div className="themed-button-container user-games-outer-container">
+            <div className="themed-title">Your Current Games</div>
+            <div className="themed-sub-title">Click on a game to continue playing or to delete the game.</div>
+            <div className="user-games-container">
+                {whiteGames.map((game) => {
+                    return (
+
+                            <div key={`user-white-game${game.id}`} className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
+                                {chessboard}
+                                {positionPlacer(game.current_board_state)}
+                            </div>
+
+                    )
+                })}
+            </div>
         </div>
     )
 }

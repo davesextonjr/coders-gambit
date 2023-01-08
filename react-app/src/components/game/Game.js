@@ -19,10 +19,9 @@ export default function Game() {
             }
     }
 
-
     return (
         <div className="background">
-            <div className="themed-button-container chess-container">
+            <div className="themed-button-container themed-container">
                 <div className="chessboard">
                     <GameBoard />
                     <GamePlay />
