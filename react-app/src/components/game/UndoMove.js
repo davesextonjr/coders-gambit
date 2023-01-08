@@ -23,7 +23,7 @@ export default function UndoMove() {
 
     }
     return (
-        <button disabled={!currentGame.moves.length} onClick={clickHandler}>
+        <button className="themed-button" disabled={!currentGame.moves.length} onClick={clickHandler}>
             UNDO MOVE
         </button>
     )

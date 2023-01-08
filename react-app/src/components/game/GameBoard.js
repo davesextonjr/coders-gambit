@@ -59,7 +59,7 @@ export default function GameBoard() {
                         onDragOver={dragOverHandler}
                         onDrop={dropHandler}
                     >
-                        {square}
+
                     </div>
                 )
             })

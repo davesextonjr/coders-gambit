@@ -4,6 +4,17 @@
     border: rgba(0, 0, 0, 0) solid 1px;
 }
 
+.chess-container.themed-button-container{
+    height: 80vh;
+    width: 80%;
+}
+
+.game-button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .chessboard {
     height: 85%;
     background-color: antiquewhite;
@@ -26,7 +37,7 @@
 
 .squares{
 
-    border: brown solid 1px;
+    border: rgba(0, 0, 0, 0.185) solid 1px;
     height: 100%;
     width: 100%;
 }
