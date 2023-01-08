@@ -38,24 +38,33 @@ export default function UserGames() {
 
     let chessboard = chessboardCreator() //make the 2d array
 
-    chessboard = chessboard.map((square) => {
-        return (
-            <div
-                id={square}
-                key={square}
-                className={`squares ${square}`}
+    // chessboard = chessboard.map((square, i) => {
+    //     return (
+    //         <div
+    //             id={square}
+    //             key={`${square}-${i}`}
+    //             className={`squares ${square}`}
 
-            />
-        )
-    })
+    //         />
+    //     )
+    // })
 
     return (
         <div className="user-games">
-            {whiteGames.map(game => {
+            {whiteGames.map((game, i) => {
                 return (
-                    <div classname='chessboard-container'>
+                    <div key={`user-white-game${game.id}`} classname='chessboard-container'>
                         <div className="chessboard" onClick={() => history.push(`/game/${game.id}`)}>
-                            {chessboard}
+                            {chessboard.map((square) => {
+                                return (
+                                    <div
+                                        id={square}
+                                        key={`${square}-${i}`}
+                                        className={`squares ${square}`}
+
+                                    />
+                                )
+                            })}
                             {positionPlacer(game.current_board_state)}
                         </div>
                         <div className="button-container">
