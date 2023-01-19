@@ -32,6 +32,7 @@ body {
 
 [data-board="light"]{
     --background: antiquewhite;
+    --background-color: rgb(255, 253, 253);
     --box-background: white;
     --color: black;
 }
@@ -43,6 +44,7 @@ body {
 }
 [data-board="dark"]{
     --background: black;
+    --background-color: rgb(76, 71, 71);
     --box-background: rgb(93, 91, 91);
     --form-background:rgb(27, 27, 27);
     --form-color: gray;
