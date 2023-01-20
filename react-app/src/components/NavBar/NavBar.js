@@ -13,14 +13,16 @@ const NavBar = () => {
   const history = useHistory()
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
+  let newGameInfo
 
-
-  const newGameInfo = {
+  if (user){
+    newGameInfo = {
     white_id: user.id,
     black_id: user.id,
     history,
     dispatch
   }
+}
 
 
   return (

@@ -1,16 +1,11 @@
-.main-page {
-    /* background-color: var(--background);
-    color: var(--color); */
-    width: 100%;
-    height: 100%;
-}
+
 .start-new-game,
 .themed-button{
     text-align: center;
+    color: var(--color);
     width: 75%;
     margin: auto;
     margin-top: 2%;
-    font-size: 12px;
     background-color: var(--button-background);
     padding: 6px 36px;
     border-radius: 8px;
@@ -20,6 +15,7 @@
 .themed-button:hover {
     cursor: pointer;
     box-shadow: 0 0 12px black;
+    color: var(--hover-color);
 
 }
 
@@ -30,13 +26,12 @@
 }
 
 .themed-button-container{
-    text-shadow: 1px 1px black;
-    color: rgb(236, 240, 243);
+
     display: flex;
     flex-direction: column;
     flex-basis: auto;
     justify-content: center;
-    background-color: rgba(128, 128, 128, 0.339);
+    background-color: var(--box-background);
     border-radius: 12px;
     /* height: 50%; */
     width: 50%;
@@ -44,7 +39,16 @@
     text-align: center;
 
     margin: auto;
-    margin-top: 70px;
+    margin-top: 20vh;
+}
+
+.themed-title{
+    font-size: xx-large;
+    margin-bottom: 5px;
+}
+
+.themed-sub-title{
+    font-size: x-large;
 }
 
 .user-games-container{

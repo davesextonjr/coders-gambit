@@ -17,7 +17,7 @@ export default function MainPage() {
                 <div className="themed-title">The world is your oyster!</div>
                 <div className="themed-sub-title">What will you do next?</div>
                 <NewGame />
-                <div className="themed-button" onClick={()=> history.push('/games')}>Games in progress</div>
+                <div className="themed-button" onClick={()=> history.push('/games')}>Continue a Game</div>
                 <div className="themed-button" onClick={() => history.push('/theme/add')}>Create a new theme</div>
                 <div className="themed-button" onClick={() => history.push('/theme/edit')}>Edit your themes</div>
             </div>

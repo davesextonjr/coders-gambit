@@ -2,7 +2,9 @@ nav {
     /* background-color: black; */
     display: flex;
     justify-content: space-between;
-    padding: 0 10px;
+    margin: 0% 2%;
+    padding-top: 1%;
+
 
 
 }
@@ -36,7 +38,7 @@ a {
     flex-direction: column;
     padding: 12px;
     position: absolute;
-    top: 35px;
+    top: 45px;
     right: 15px;
     width: 200px;
     overflow: auto;
