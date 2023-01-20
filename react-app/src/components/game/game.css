@@ -4,7 +4,6 @@
     width: 100%;
     border: rgba(0, 0, 0, 0) solid 1px; */
     display: flex;
-    background-color: var(--background);
 }
 
 .themed-container.themed-button-container{
@@ -14,7 +13,7 @@
     /* margin-top: 2%; */
     margin: 5vh auto;
     max-height: 85vh;
-    width: 50%;
+    width: 45%;
 
 }
 
