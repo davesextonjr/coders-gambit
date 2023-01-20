@@ -17,7 +17,7 @@ export default function UserThemes(){
     }, [dispatch]);
     if (!loaded) {
         return (
-            <h1>waiting for themes</h1>
+            null
         )
     }
     const userThemes = Object.values(themes)
