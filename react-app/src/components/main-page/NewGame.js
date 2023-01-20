@@ -4,6 +4,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import { startNewGame } from "../../store/currentGame";
 import { openingPosition } from "../game/definitions/opening-position";
 
+
 export default function NewGame(){
     const history = useHistory()
     const dispatch = useDispatch()

@@ -32,19 +32,25 @@ body {
 
 [data-board="light"]{
     --background: antiquewhite;
-    --background-color: rgb(255, 253, 253);
-    --box-background: white;
-    --color: black;
+    --color: rgb(55, 52, 52);
+    --box-background:rgba(55, 52, 52, 0.429);
+
+
+
+    --hover-color: rgb(202, 193, 193);
+
+
+    --button-background: rgb(255, 253, 253);
 }
 
-[data-board="blue"]{
-    --background: blue;
+[data-board="transparent"]{
+    --background: rgba(128, 128, 128, 0);
     --box-background: white;
     --color: green;
 }
 [data-board="dark"]{
     --background: black;
-    --background-color: rgb(76, 71, 71);
+    --button-background: rgb(76, 71, 71);
     --box-background: rgb(93, 91, 91);
     --form-background:rgb(27, 27, 27);
     --form-color: gray;

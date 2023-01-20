@@ -11,7 +11,7 @@
     margin: auto;
     margin-top: 2%;
     font-size: 12px;
-    background-color: var(--background-color);
+    background-color: var(--button-background);
     padding: 6px 36px;
     border-radius: 8px;
 }

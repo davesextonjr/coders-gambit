@@ -35,8 +35,6 @@ const NavBar = () => {
 
         <ProfileButton />
 
-        <LogoutButton />
-
       </nav>
       :
       <div></div>

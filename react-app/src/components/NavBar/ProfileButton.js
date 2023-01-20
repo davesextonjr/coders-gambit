@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setTheme } from "../../store/theme";
 import UserThemes from "../themes/UserThemes";
+import LogoutButton from "../auth/LogoutButton";
 
 export default function ProfileButton() {
     const [isMenuShown, setIsMenuShown] = useState(false)
@@ -49,24 +50,32 @@ export default function ProfileButton() {
     return (
         <>
             <div className="menu" onClick={toggleMenu}>
-                Choose Theme
+                Options
             </div>
-            {isMenuShown && (
+            {isMenuShown && !areThemesShown && (
                 <>
                 <div className="themes container">
+                    <div className="no-hover">THEMES</div>
+                    <div className="divider"></div>
+
                     <div onClick={clickHandler} id='light'>Light</div>
                     <div onClick={clickHandler} id='dark'>Dark</div>
                     <div onClick={clickHandler} id='transparent'>Transparent</div>
+
+                    <div className="divider"></div>
+
                     <div onClick={clickYourThemes} id='transparent'>Your Themes</div>
                     <div onClick={clickCreateTheme}>Create Theme</div>
-                </div>
-                {areThemesShown && (
-                   <div className="user-themes container">
-                        <UserThemes />
-                   </div>
-                )}
-                </>
 
+                    <div className="divider"></div>
+                    <LogoutButton />
+                </div>
+                </>
+            )}
+            {isMenuShown && areThemesShown && (
+                <div className="user-themes container">
+                         <UserThemes />
+                </div>
             )}
         </>
     )
