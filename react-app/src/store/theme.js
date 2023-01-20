@@ -73,7 +73,7 @@ export const deleteUserTheme = themeId => async dispatch => {
 
 
 //Initial State Definition
-const initialState = {background: "dark", url:"", themeName:"", lightSquares:"#faebd7", darkSquares:"#b8860b", pieceName:"default"}
+const initialState = {background: "light", url:"", themeName:"", lightSquares:"#faebd7", darkSquares:"#b8860b", pieceName:"default"}
 
 //Reducer
 export default function themeReducer(state = initialState, action){

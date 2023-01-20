@@ -30,22 +30,29 @@ body {
     background-size: cover;
 }
 
-[data-board="light"]{
-    --background: antiquewhite;
-    --box-background: white;
-    --color: black;
-}
 
-[data-board="blue"]{
-    --background: blue;
-    --box-background: white;
-    --color: green;
+[data-board="transparent"]{
+    --background: rgba(128, 128, 128, 0);
+    --color: rgb(255, 255, 255);
+    --box-background: rgba(128, 128, 128, 0.5);
+    --hover-color: rgb(207, 205, 205);
+    --button-background: rgb(76, 71, 71);
 }
 [data-board="dark"]{
     --background: black;
+    --color: rgb(192, 182, 182);
+    --button-background: rgb(76, 71, 71);
     --box-background: rgb(93, 91, 91);
     --form-background:rgb(27, 27, 27);
     --form-color: gray;
-    --color: rgb(192, 182, 182);
-    --hover: white;
+    --hover-color: white;
+}
+
+[data-board="light"]{
+    --background: antiquewhite;
+    --color: rgb(55, 52, 52);
+    --box-background:rgba(55, 52, 52, 0.429);
+    --hover-color: rgb(202, 193, 193);
+    --button-background:rgb(250, 244, 237);
+
 }

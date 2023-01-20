@@ -157,7 +157,7 @@ export default function EditThemeForm() {
                 required >
                 <option value="dark">Dark</option>
                 <option value="light">Light</option>
-                <option value="transparent">transparent</option>
+                <option value="transparent">Transparent</option>
             </select>
             <label htmlFor="url">(Optional) Enter an image url to set a background image:</label>
             <input
