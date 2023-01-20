@@ -1,7 +1,7 @@
 import {startNewGame} from "../../../store/currentGame"
 import {openingPosition} from "../../game/definitions/opening-position"
 
-export async function createNewGame(white_id, black_id){
+export async function CreateNewGame({white_id, black_id, history, dispatch}){
     const moves = [];
     const newGame = await dispatch(startNewGame({
         white_id,
