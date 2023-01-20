@@ -1,45 +1,57 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import LogoutButton from '../auth/LogoutButton';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import ProfileButton from './ProfileButton';
 import './NavBar.css'
 import { useSelector } from 'react-redux';
+import { CreateNewGame } from "../game/game-utilities";
 
 
 
 const NavBar = () => {
+  const history = useHistory()
+  const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
+
+
+  const newGameInfo = {
+    white_id: user.id,
+    black_id: user.id,
+    history,
+    dispatch
+  }
+
 
   return (
 
     <>
       {user ?
-      <nav>
+        <nav>
 
-        <NavLink to='/' exact={true} activeClassName='active'>
-          Home
-        </NavLink>
+          <NavLink to='/' exact={true} activeClassName='active'>
+            Home
+          </NavLink>
 
-        <NavLink to='/games' exact={true} activeClassName='active'>
-          Your Games
-        </NavLink>
+          <NavLink to='/games' exact={true} activeClassName='active'>
+            Your Games
+          </NavLink>
 
-        <NavLink to='/theme/add' exact={true} activeClassName='active'>
-          Create New Theme
-        </NavLink>
+          <div className="menu" onClick={() => CreateNewGame(newGameInfo)}>
+            Start a New Game
+          </div>
 
-        <NavLink to='/theme/edit' exact={true} activeClassName='active'>
-          Edit Your Themes
-        </NavLink>
+          <NavLink to='/theme/add' exact={true} activeClassName='active'>
+            Create New Theme
+          </NavLink>
 
-        <ProfileButton />
+          <ProfileButton />
 
-      </nav>
-      :
-      <div></div>
+        </nav>
+        :
+        <div></div>
 
-    }
+      }
 
     </>
 

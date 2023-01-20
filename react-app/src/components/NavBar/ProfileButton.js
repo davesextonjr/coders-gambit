@@ -1,31 +1,42 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setTheme } from "../../store/theme";
 import UserThemes from "../themes/UserThemes";
 import LogoutButton from "../auth/LogoutButton";
 
+
 export default function ProfileButton() {
+    const history = useHistory()
+    const dispatch = useDispatch()
+    const currentUser = useSelector(state => state.session.user)
+
+
     const [isMenuShown, setIsMenuShown] = useState(false)
     const [areThemesShown, setAreThemesShown] = useState(false)
 
-    const history = useHistory()
 
     const toggleMenu = () => isMenuShown ? setIsMenuShown(false) : setIsMenuShown(true)
     const toggleThemesMenu = () => areThemesShown ? setAreThemesShown(false) : setAreThemesShown(true)
     const closeMenu = () => {setIsMenuShown(false)}
     const closeThemesMenu = () => setAreThemesShown(false)
-    const dispatch = useDispatch()
+
+
     useEffect(() => {
         if (!isMenuShown) return
         document.addEventListener('click', closeMenu)
         return () => document.removeEventListener("click", closeMenu)
     }, [isMenuShown])
+
     useEffect(() => {
         if (!areThemesShown) return
         document.addEventListener('click', closeThemesMenu)
         return () => document.removeEventListener("click", closeThemesMenu)
     }, [areThemesShown])
+
+
+
+
 
     const clickHandler = e => {
         e.stopPropagation()
