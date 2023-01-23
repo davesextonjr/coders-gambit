@@ -48,34 +48,30 @@ function App() {
           <SignUpForm />
         </Route>
 
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-
         <ProtectedRoute path='/games' exact={true} >
           <UserGames />
         </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
+
         <Route path='/home' exact={true} >
           <LandingPage />
         </Route>
+
         <ProtectedRoute path='/' exact={true} >
           <MainPage />
         </ProtectedRoute>
+
         <ProtectedRoute path='/game/:id'>
           <Game />
         </ProtectedRoute>
+
         <ProtectedRoute path='/theme/add'>
           <AddThemeForm />
         </ProtectedRoute>
+
         <ProtectedRoute path='/theme/edit'>
           <EditThemeForm />
         </ProtectedRoute>
-        <ProtectedRoute path='/theme'>
-          <UserThemes />
-        </ProtectedRoute>
+
       </Switch>
     </BrowserRouter>
   </div>
