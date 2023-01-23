@@ -1,23 +1,11 @@
 import React from "react"
-import { useDispatch } from "react-redux"
 import { useHistory } from "react-router-dom"
-
 
 import DemoLogin from "../User/DemoLogin"
 import './landingPage.css'
 
 export default function LandingPage() {
     const history = useHistory()
-    // const dispatch = useDispatch()
-
-
-    // const clickDemoHandler = async e => {
-    //     const data = await dispatch(login('bobbie@aa.io', 'password'))
-    //     if (data) {
-    //         alert('something went wrong')
-    //     }
-    //     history.push('/')
-    // }
 
     return (
         <div className="splash-background" style={{backgroundImage: `url(https://lichess1.org/assets/images/background/landscape.jpg)`}}>
@@ -28,7 +16,6 @@ export default function LandingPage() {
                 <button onClick={(e)=>(history.push('/login'))}>Sign In</button>
                 <button onClick={(e)=>(history.push('/sign-up'))}>Register</button>
                 <DemoLogin />
-                {/* <button onClick={clickDemoHandler}>Demo User</button> */}
             </div>
         </div>
     )
