@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+//This component is unused right now - it could be used if I want to display all other users
 
-function UsersList() {
-  const [users, setUsers] = useState([]);
+// import React, { useEffect, useState } from 'react';
+// import { NavLink } from 'react-router-dom';
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/users/');
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
+// function UsersList() {
+//   const [users, setUsers] = useState([]);
 
-  const userComponents = users.map((user) => {
-    return (
-      <li key={user.id}>
-        <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-      </li>
-    );
-  });
+//   useEffect(() => {
+//     async function fetchData() {
+//       const response = await fetch('/api/users/');
+//       const responseData = await response.json();
+//       setUsers(responseData.users);
+//     }
+//     fetchData();
+//   }, []);
 
-  return (
-    <>
-      <h1>User List: </h1>
-      <ul>{userComponents}</ul>
-    </>
-  );
-}
+//   const userComponents = users.map((user) => {
+//     return (
+//       <li key={user.id}>
+//         <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+//       </li>
+//     );
+//   });
 
-export default UsersList;
+//   return (
+//     <>
+//       <h1>User List: </h1>
+//       <ul>{userComponents}</ul>
+//     </>
+//   );
+// }
+
+// export default UsersList;

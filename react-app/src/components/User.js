@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+// Currently unused - could be used to display the current user
 
-function User() {
-  const [user, setUser] = useState({});
-  const { userId }  = useParams();
+// import React, { useState, useEffect } from 'react';
+// import { useParams } from 'react-router-dom';
 
-  useEffect(() => {
-    if (!userId) {
-      return;
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
-  }, [userId]);
+// function User() {
+//   const [user, setUser] = useState({});
+//   const { userId }  = useParams();
 
-  if (!user) {
-    return null;
-  }
+//   useEffect(() => {
+//     if (!userId) {
+//       return;
+//     }
+//     (async () => {
+//       const response = await fetch(`/api/users/${userId}`);
+//       const user = await response.json();
+//       setUser(user);
+//     })();
+//   }, [userId]);
 
-  return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
-  );
-}
-export default User;
+//   if (!user) {
+//     return null;
+//   }
+
+//   return (
+//     <ul>
+//       <li>
+//         <strong>User Id</strong> {userId}
+//       </li>
+//       <li>
+//         <strong>Username</strong> {user.username}
+//       </li>
+//       <li>
+//         <strong>Email</strong> {user.email}
+//       </li>
+//     </ul>
+//   );
+// }
+// export default User;
