@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Redirect, useHistory } from 'react-router-dom';
+import { NavLink, Redirect} from 'react-router-dom';
 import { login } from '../../store/session';
+import DemoLogin from '../User/DemoLogin';
 import './form.css'
 
 const LoginForm = () => {
@@ -9,7 +10,6 @@ const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const user = useSelector(state => state.session.user);
-  const history = useHistory()
   const dispatch = useDispatch();
 
   const onLogin = async (e) => {
@@ -67,7 +67,8 @@ const LoginForm = () => {
             required
           />
         </div>
-        <button type='submit'>SIGN IN</button>
+        <button type='submit'>Sign In</button>
+        <DemoLogin />
         <NavLink to='/sign-up' activeClassName='active'>
           Not registered? Register Here.
         </NavLink>

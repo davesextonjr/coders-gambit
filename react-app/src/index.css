@@ -49,10 +49,12 @@ body {
 }
 
 [data-board="light"]{
-    --background: antiquewhite;
+    --background: rgb(250, 235, 215);
     --color: rgb(55, 52, 52);
-    --box-background:rgba(55, 52, 52, 0.429);
+    --box-background:rgba(55, 52, 52, 0.679);
     --hover-color: rgb(202, 193, 193);
     --button-background:rgb(250, 244, 237);
+    --form-background:rgb(27, 27, 27);
+
 
 }
