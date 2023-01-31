@@ -42,6 +42,7 @@ def upgrade():
     sa.Column('black_id', sa.Integer(), nullable=False),
     sa.Column('moves', sa.String(length=100000), nullable=True),
     sa.Column('current_board_state', sa.String(length=5000), nullable=True),
+    sa.Column('fen', sa.String(length=200, nullable=True))')
     sa.ForeignKeyConstraint(['black_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['white_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
