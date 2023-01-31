@@ -11,6 +11,7 @@ export function moveValidation (fen="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
             return alert(error)
         }
     }
+    if(chess.isGameOver()) return "Great Game!"
     console.log("state after move", chess.fen())
     return chess.fen()
 }
