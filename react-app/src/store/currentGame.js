@@ -99,7 +99,7 @@ export const getGameById = id => async (dispatch) => {
 
 
 //Initial State Definition
-const initialState = {position: null, whiteUser:null, blackUser:null, moves:[], gameId: null}
+const initialState = {position: null, whiteUser:null, blackUser:null, moves:[], gameId: null, fen: ""}
 
 //Reducer
 export default function currentGameReducer(state = initialState, action){
