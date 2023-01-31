@@ -8,7 +8,7 @@ export function moveValidation (fen="rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
         try {
             chess.move(move)
         } catch (error) {
-            alert(error)
+            return alert(error)
         }
     }
     console.log("state after move", chess.fen())

@@ -21,6 +21,7 @@ export default function GamePlay() {
     }, [dispatch, id]);
     const currentGame = useSelector(state => state.currentGame)
     const currentPosition = useSelector(state => state.currentGame.position)
+    const currentFen = useSelector(state => state.currentGame.fen)
     if (!loaded) {
         return (
             <h1>waiting for a position</h1>
