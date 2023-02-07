@@ -73,7 +73,7 @@ export const deleteUserTheme = themeId => async dispatch => {
 
 
 //Initial State Definition
-const initialState = {background: "light", url:"", themeName:"", lightSquares:"#faebd7", darkSquares:"#b8860b", pieceName:"default"}
+const initialState = {background: "transparent", url:"https://lichess1.org/assets/images/background/landscape.jpg", themeName:"", lightSquares:"#faebd7", darkSquares:"#b8860b", pieceName:"default"}
 
 //Reducer
 export default function themeReducer(state = initialState, action){
