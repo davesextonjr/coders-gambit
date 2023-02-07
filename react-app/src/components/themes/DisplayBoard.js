@@ -34,7 +34,7 @@ export function DisplayBoard() {
 
 
     return (
-        <div className="chessboard">
+        <div className="chessboard display">
             {chessboard}
             {positionPlacer(position)}
         </div>

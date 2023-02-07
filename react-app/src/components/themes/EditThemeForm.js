@@ -99,7 +99,6 @@ export default function EditThemeForm() {
     }
 
     return (
-        <>
             <form className="themed-form" onSubmit={handleSubmit}>
                 <label className="themed-form" htmlFor='theme-name'>Choose your theme:</label>
                 <select
@@ -122,6 +121,8 @@ export default function EditThemeForm() {
                     onChange={(e) => setThemeName(e.target.value)}
                     required />
 
+                <div className="square-container">
+
                 <label htmlFor='light-squares'>Choose a light square color:</label>
                 <input
                     id='light-squares'
@@ -137,7 +138,8 @@ export default function EditThemeForm() {
                     value={darkSquares}
                     onChange={(e) => setDarkSqares(e.target.value)}
                     required />
-
+                <DisplayBoard />
+                </div>
                 {/* <label htmlFor='piece-name'>Choose your pieces:</label> */}
                 {/* <select
                 id='piece-name'
@@ -174,7 +176,6 @@ export default function EditThemeForm() {
                 <button className="themed-button" type="submit">Update Your Theme</button>
                 {themeId && <button className="themed-button" onClick={handleDeleteClick}>Delete Your Theme</button>}
             </form>
-            <DisplayBoard />
-        </>
+
     )
 }
