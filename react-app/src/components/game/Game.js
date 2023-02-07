@@ -6,6 +6,7 @@ import GamePlay from "./GamePlay";
 import { deleteUserGame } from "../../store/userGames";
 import UndoMove from "./UndoMove";
 import "./game.css"
+import { moveValidation } from "./move-validation/moveValidation";
 
 export default function Game() {
     const currentGameId = useSelector(state => state.currentGame.gameId)
@@ -18,7 +19,7 @@ export default function Game() {
                 history.push("/")
             }
     }
-
+    // console.log(moveValidation("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1", {from:'e2', to: 'e4'}))
     return (
         <div className="background">
             <div className="themed-button-container themed-container">

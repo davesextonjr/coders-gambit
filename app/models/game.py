@@ -18,7 +18,7 @@ class Game(db.Model):
     black_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     moves = db.Column(db.String(100000))
     current_board_state = db.Column(db.String(5000))
-
+    fen = db.Column(db.String(200))
 
 
     user_as_white = db.relationship('User', foreign_keys=white_id, back_populates='game_as_white')
@@ -30,5 +30,6 @@ class Game(db.Model):
             'white_id': self.white_id,
             'black_id': self.black_id,
             'moves': self.moves,
-            'current_board_state': self.current_board_state
+            'current_board_state': self.current_board_state,
+            'fen': self.fen
         }

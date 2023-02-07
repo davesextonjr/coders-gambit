@@ -15,10 +15,11 @@ const createGame = (game, position) => ({
     position
 })
 
-export const addPosition = (position, moves) => ({
+export const addPosition = (position, moves, fen) => ({
     type: ADD_POSITION,
     position,
-    moves
+    moves,
+    fen
 })
 
 const setGameById = (game, position, moves) => ({
@@ -41,7 +42,8 @@ export const startNewGame = (game) => async (dispatch) => {
             white_id: game.white_id,
             black_id: game.black_id,
             current_board_state: game.current_board_state,
-            moves: game.moves
+            moves: game.moves,
+            fen: game.fen
         })
     })
 
@@ -66,7 +68,8 @@ export const updateGame = game => async (dispatch) => {
             white_id: game.white_id,
             black_id: game.black_id,
             moves: game.moves,
-            current_board_state: game.current_board_state
+            current_board_state: game.current_board_state,
+            fen: game.fen
         })
     })
 
@@ -75,7 +78,7 @@ export const updateGame = game => async (dispatch) => {
         // console.log(JSON.parse(game.current_board_state), JSON.parse(game.moves))
         const position = JSON.parse(game.current_board_state)
         const moves = JSON.parse(game.moves)
-        dispatch(addPosition(position, moves))
+        dispatch(addPosition(position, moves, game.fen))
         return game
     }
     const error = await response.json()
@@ -99,19 +102,20 @@ export const getGameById = id => async (dispatch) => {
 
 
 //Initial State Definition
-const initialState = {position: null, whiteUser:null, blackUser:null, moves:[], gameId: null}
+const initialState = {position: null, whiteUser:null, blackUser:null, moves:[], gameId: null, fen: ""}
 
 //Reducer
 export default function currentGameReducer(state = initialState, action){
     switch(action.type){
         case CREATE_GAME:{
-            const newState = {...state, gameId: action.game.id, position: action.position, whiteUser:action.game.white_id, blackUser: action.game.black_id, moves:[]}
+            const newState = {...state, gameId: action.game.id, position: action.position, whiteUser:action.game.white_id, blackUser: action.game.black_id, moves:[], fen: action.game.fen}
             return newState
         }
         case ADD_POSITION:{
             const newState = {...state}
             newState.position = {...state.position, ...action.position}
             newState.moves = [...action.moves]
+            newState.fen = action.fen
             return newState
         }
         case SET_GAME_BY_ID:{
@@ -121,6 +125,7 @@ export default function currentGameReducer(state = initialState, action){
             newState.blackUser = action.game.black_id
             newState.position = {...action.position}
             newState.moves = [...action.moves]
+            newState.fen = action.game.fen
             if(newState.moves.length && Array.isArray(newState[0])) newState.moves.shift() //this is to get rid of the empty array as starting data
             return newState
         }

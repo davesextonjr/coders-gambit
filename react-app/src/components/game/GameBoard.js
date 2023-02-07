@@ -8,6 +8,7 @@ import { updateGame } from "../../store/currentGame";
 // Continuing to grow in using modular code
 import { dragOverHandler } from "./helper-functions/DragAndDrop";
 import chessboardCreator from "./definitions/chessboard";
+import { moveValidation } from "./move-validation/moveValidation";
 
 export default function GameBoard() {
     const dispatch = useDispatch()
@@ -18,6 +19,7 @@ export default function GameBoard() {
     const start = useSelector(state => state.move)
     const currentPosition = useSelector(state => state.currentGame.position)
     const currentGame = useSelector(state => state.currentGame)
+    const currentFen = useSelector(state => state.currentGame.fen)
     const lightSquares = useSelector(state => state.theme.lightSquares)
     const darkSquares = useSelector(state => state.theme.darkSquares)
 
@@ -28,12 +30,14 @@ export default function GameBoard() {
         e.stopPropagation()
         // dispatch(setEnd(e.target.id)) //not currently using this end in moves.
 
-        //create an object to hold the new position
+        //create an object to hold the new position and a variable to hold the return fen state
         const newPosition = { ...currentPosition }
-
+        let newFen
         //if the starting square, piece name, and ending square are all known, set the landing square to the piece name, and the leaving square to null.
         //TODO: I am looking forward to thinking through how to define the move logic as I continue to hone my skill as a programmer.
         if (start.startPosition && start.pieceName && e.target.id) {
+            newFen = moveValidation(currentFen, {from: start.startPosition, to: e.target.id})
+            console.log(newFen)
             newPosition[start.startPosition] = null
             newPosition[e.target.id] = start.pieceName
         }
@@ -45,7 +49,8 @@ export default function GameBoard() {
             white_id: currentGame.whiteUser,
             black_id: currentGame.blackUser,
             moves: JSON.stringify([...currentGame.moves, currentPosition]),
-            current_board_state: JSON.stringify(newPosition)
+            current_board_state: JSON.stringify(newPosition),
+            fen: newFen
         }
         dispatch(updateGame(game))
     }

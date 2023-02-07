@@ -6,6 +6,8 @@ import { setPiece, setStart } from "../../store/move";
 import { useDispatch, useSelector } from 'react-redux';
 import { getGameById, updateGame } from "../../store/currentGame";
 
+import { moveValidation } from "./move-validation/moveValidation";
+
 
 export default function GamePlay() {
     const [loaded, setLoaded] = useState(false)
@@ -21,6 +23,7 @@ export default function GamePlay() {
     }, [dispatch, id]);
     const currentGame = useSelector(state => state.currentGame)
     const currentPosition = useSelector(state => state.currentGame.position)
+    const currentFen = useSelector(state => state.currentGame.fen)
     if (!loaded) {
         return (
             <h1>waiting for a position</h1>
@@ -43,8 +46,9 @@ export default function GamePlay() {
         e.stopPropagation()
         // dispatch(setEnd(e.target.id)) // currently not using this
         const newPosition = { ...currentPosition }
-
+        let newFen
         if (begin && beginPiece && e.target.id) {
+            newFen = moveValidation(currentFen, {from: begin, to: e.target.id})
             newPosition[begin] = null
             newPosition[e.target.id] = beginPiece
         }
@@ -53,7 +57,8 @@ export default function GamePlay() {
             white_id: currentGame.whiteUser,
             black_id: currentGame.blackUser,
             moves: JSON.stringify([...currentGame.moves, currentPosition]),
-            current_board_state: JSON.stringify(newPosition)
+            current_board_state: JSON.stringify(newPosition),
+            fen: newFen
         }
 
         dispatch(updateGame(game))

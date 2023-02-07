@@ -96,7 +96,7 @@ export default function AddThemeForm() {
                 <option value="pretty">"Pretty pieces coming soon"</option>
             </select> */}
 
-            <label htmlFor='background-name'>Choose your theme style:</label>
+            <label htmlFor='background-name'>Choose your menu style:</label>
             <select
                 id='background-name'
                 value={background}

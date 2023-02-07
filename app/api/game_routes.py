@@ -57,7 +57,8 @@ def create_new_game():
             white_id=form.data['white_id'],
             black_id=form.data['black_id'],
             moves=form.data['moves'],
-            current_board_state=form.data['current_board_state']
+            current_board_state=form.data['current_board_state'],
+            fen=form.data['fen']
         )
         db.session.add(game)
         db.session.commit()
@@ -77,6 +78,7 @@ def update_game():
        game = Game.query.get(edited_game['id'])
        game.moves = edited_game['moves']
        game.current_board_state = edited_game['current_board_state']
+       game.fen = edited_game['fen']
        db.session.commit()
        saved_game = game.to_dict()
        return saved_game

@@ -7,7 +7,8 @@ export async function CreateNewGame({white_id, black_id, history, dispatch}){
         white_id,
         black_id,
         current_board_state: JSON.stringify(openingPosition),
-        moves: JSON.stringify(moves)
+        moves: JSON.stringify(moves),
+        fen:"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
     }))
     console.log( "the new Game", newGame)
     if (newGame.id){
