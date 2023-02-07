@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { addTheme, deleteUserTheme, setTheme } from "../../store/theme"
 import { useHistory } from "react-router-dom";
 import { loadUserThemes, updateThemeById } from "../../store/userThemes";
+import { DisplayBoard } from "./DisplayBoard";
 
 export default function EditThemeForm() {
     const currentBackground = useSelector(state => state.theme.background)
@@ -35,14 +36,14 @@ export default function EditThemeForm() {
     }
     const userThemes = Object.values(themes)
 
-    if (!userThemes.length){
-            return (
-                <div className="themed-button-container">
-                    <div className="themed-title">Trying to push the limits of creativity, huh?</div>
-                    <div className="themed-title">You still can't edit a theme if you haven't created one yet.</div>
-                    <div className="themed-button" onClick={() => history.push('/theme/add')}>Create a new theme</div>
-                </div>
-            )
+    if (!userThemes.length) {
+        return (
+            <div className="themed-button-container">
+                <div className="themed-title">Trying to push the limits of creativity, huh?</div>
+                <div className="themed-title">You still can't edit a theme if you haven't created one yet.</div>
+                <div className="themed-button" onClick={() => history.push('/theme/add')}>Create a new theme</div>
+            </div>
+        )
     }
 
 
@@ -50,7 +51,7 @@ export default function EditThemeForm() {
     const themeChangeHandler = e => {
         setThemeId(e.target.value)
         const theme = themes[e.target.value]
-        console.log("the theme is", {theme})
+        console.log("the theme is", { theme })
         dispatch(setTheme(theme))
         setThemeName(theme.theme_name)
         setLightSquares(theme.light_squares)
@@ -62,7 +63,7 @@ export default function EditThemeForm() {
 
     const handleDeleteClick = e => {
         e.preventDefault()
-        if(window.confirm("Are you sure you want to delete this theme?")) {
+        if (window.confirm("Are you sure you want to delete this theme?")) {
             dispatch(deleteUserTheme(themeId))
             history.push('/')
         }
@@ -98,46 +99,47 @@ export default function EditThemeForm() {
     }
 
     return (
-        <form className="themed-form" onSubmit={handleSubmit}>
-            <label className="themed-form" htmlFor='theme-name'>Choose your theme:</label>
-            <select
-                id='theme-id'
-                value={themeId}
-                onChange={themeChangeHandler}
-                required >
-                        <option value="" disabled hidden>Which theme do you want to update</option>
-                {userThemes.map(theme => {
-                    return(
-                        <option key={`value-${theme.id}`} value={theme.id}>{theme.theme_name}</option>
-                    )
-                })}
-            </select>
+        <>
+            <form className="themed-form" onSubmit={handleSubmit}>
+                <label className="themed-form" htmlFor='theme-name'>Choose your theme:</label>
+                <select
+                    id='theme-id'
+                    value={themeId}
+                    onChange={themeChangeHandler}
+                    required >
+                    <option value="" disabled hidden>Which theme do you want to update</option>
+                    {userThemes.map(theme => {
+                        return (
+                            <option key={`value-${theme.id}`} value={theme.id}>{theme.theme_name}</option>
+                        )
+                    })}
+                </select>
 
-            <input
-                id='theme-name'
-                type="text"
-                value={themeName}
-                onChange={(e) => setThemeName(e.target.value)}
-                required />
+                <input
+                    id='theme-name'
+                    type="text"
+                    value={themeName}
+                    onChange={(e) => setThemeName(e.target.value)}
+                    required />
 
-            <label htmlFor='light-squares'>Choose a light square color:</label>
-            <input
-                id='light-squares'
-                type="color"
-                value={lightSquares}
-                onChange={(e) => setLightSquares(e.target.value)}
-                required />
+                <label htmlFor='light-squares'>Choose a light square color:</label>
+                <input
+                    id='light-squares'
+                    type="color"
+                    value={lightSquares}
+                    onChange={(e) => setLightSquares(e.target.value)}
+                    required />
 
-            <label htmlFor='dark-squares'>Choose a dark square color:</label>
-            <input
-                id='dark-squares'
-                type="color"
-                value={darkSquares}
-                onChange={(e) => setDarkSqares(e.target.value)}
-                required />
+                <label htmlFor='dark-squares'>Choose a dark square color:</label>
+                <input
+                    id='dark-squares'
+                    type="color"
+                    value={darkSquares}
+                    onChange={(e) => setDarkSqares(e.target.value)}
+                    required />
 
-            {/* <label htmlFor='piece-name'>Choose your pieces:</label> */}
-            {/* <select
+                {/* <label htmlFor='piece-name'>Choose your pieces:</label> */}
+                {/* <select
                 id='piece-name'
                 value={pieceName}
                 onChange={(e) => setPieceName(e.target.value)}
@@ -149,28 +151,30 @@ export default function EditThemeForm() {
                 <option value="pretty">"Pretty pieces coming soon"</option>
             </select> */}
 
-            <label htmlFor='background-name'>Choose your background:</label>
-            <select
-                id='background-name'
-                value={background}
-                onChange={(e) => setBackground(e.target.value)}
-                required >
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
-                <option value="transparent">Transparent</option>
-            </select>
-            <label htmlFor="url">(Optional) Enter an image url to set a background image:</label>
-            <input
-                id="spot-url"
-                type='url'
-                placeholder="https://example.com"
-                pattern="https://.*"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-            ></input>
-            <button className="themed-button" onClick={() => history.push('/')}>Cancel</button>
-            <button className="themed-button" type="submit">Update Your Theme</button>
-            {themeId && <button className="themed-button" onClick={handleDeleteClick}>Delete Your Theme</button>}
-        </form>
+                <label htmlFor='background-name'>Choose your menu style:</label>
+                <select
+                    id='background-name'
+                    value={background}
+                    onChange={(e) => setBackground(e.target.value)}
+                    required >
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                    <option value="transparent">Transparent</option>
+                </select>
+                <label htmlFor="url">(Optional) Enter an image url to set a background image:</label>
+                <input
+                    id="spot-url"
+                    type='url'
+                    placeholder="https://example.com"
+                    pattern="https://.*"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                ></input>
+                <button className="themed-button" onClick={() => history.push('/')}>Cancel</button>
+                <button className="themed-button" type="submit">Update Your Theme</button>
+                {themeId && <button className="themed-button" onClick={handleDeleteClick}>Delete Your Theme</button>}
+            </form>
+            <DisplayBoard />
+        </>
     )
 }
