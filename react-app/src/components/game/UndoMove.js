@@ -16,7 +16,8 @@ export default function UndoMove() {
             white_id: currentGame.whiteUser,
             black_id: currentGame.blackUser,
             moves: JSON.stringify([...currentGame.moves]),
-            current_board_state: JSON.stringify(lastMove)
+            current_board_state: JSON.stringify(lastMove),
+            fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
         }
         console.log(game)
         dispatch(updateGame(game))

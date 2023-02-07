@@ -36,8 +36,8 @@ export default function GameBoard() {
         //if the starting square, piece name, and ending square are all known, set the landing square to the piece name, and the leaving square to null.
         //TODO: I am looking forward to thinking through how to define the move logic as I continue to hone my skill as a programmer.
         if (start.startPosition && start.pieceName && e.target.id) {
-            newFen = moveValidation(currentFen, {from: start.startPosition, to: e.target.id})
-            console.log(newFen)
+            // newFen = moveValidation(currentFen, {from: start.startPosition, to: e.target.id})
+            // console.log(newFen)
             newPosition[start.startPosition] = null
             newPosition[e.target.id] = start.pieceName
         }
@@ -50,7 +50,7 @@ export default function GameBoard() {
             black_id: currentGame.blackUser,
             moves: JSON.stringify([...currentGame.moves, currentPosition]),
             current_board_state: JSON.stringify(newPosition),
-            fen: newFen
+            fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
         }
         dispatch(updateGame(game))
     }

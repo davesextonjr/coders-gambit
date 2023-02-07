@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { useParams } from 'react-router-dom';
 import { pieces } from "./definitions/pieces";
 import { setPiece, setStart } from "../../store/move";
@@ -12,6 +12,8 @@ import { moveValidation } from "./move-validation/moveValidation";
 export default function GamePlay() {
     const [loaded, setLoaded] = useState(false)
     const [begin, setBegin] = useState("")
+    let isGameOver = false
+    let winner = ""
     const [beginPiece, setBeginPiece] = useState("")
     const { id } = useParams()
     const dispatch = useDispatch()
@@ -46,9 +48,9 @@ export default function GamePlay() {
         e.stopPropagation()
         // dispatch(setEnd(e.target.id)) // currently not using this
         const newPosition = { ...currentPosition }
-        let newFen
+        // let newFen
         if (begin && beginPiece && e.target.id) {
-            newFen = moveValidation(currentFen, {from: begin, to: e.target.id})
+            //newFen = moveValidation(currentFen, {from: begin, to: e.target.id})
             newPosition[begin] = null
             newPosition[e.target.id] = beginPiece
         }
@@ -58,12 +60,17 @@ export default function GamePlay() {
             black_id: currentGame.blackUser,
             moves: JSON.stringify([...currentGame.moves, currentPosition]),
             current_board_state: JSON.stringify(newPosition),
-            fen: newFen
+            fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
         }
 
         dispatch(updateGame(game))
 
     }
+    if (! Object.values(currentPosition).includes("bK") || ! Object.values(currentPosition).includes("wK")) {
+        winner = Object.values(currentPosition).includes("bK") ? 'Black' : 'White'
+        isGameOver = true
+    }
+
 
     const gameState = []
     for (const square in currentPosition) {
@@ -84,8 +91,12 @@ export default function GamePlay() {
     }
 
 
+
+
+
     return (
         <>
+            {isGameOver && <div className="winner">{winner} wins!</div>}
             {gameState}
         </>
 
