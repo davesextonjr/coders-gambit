@@ -20,6 +20,7 @@ const deleteTheme = themeId => ({
 })
 
 
+
 //Thunks(Middleware)
 export const addTheme = theme => async dispatch => {
     const jason = JSON.stringify({

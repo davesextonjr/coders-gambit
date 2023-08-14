@@ -6,7 +6,7 @@ import { loadUserThemes, updateThemeById } from "../../store/userThemes";
 import { DisplayBoard } from "./DisplayBoard";
 
 export default function EditThemeForm() {
-    const currentBackground = useSelector(state => state.theme.background)
+    const currentTheme = useSelector(state => state.theme)
     const userId = useSelector(state => state.session.user.id)
 
     const dispatch = useDispatch()
@@ -16,8 +16,8 @@ export default function EditThemeForm() {
     const [loaded, setLoaded] = useState(false)
     const [themeId, setThemeId] = useState('')
     const [themeName, setThemeName] = useState('')
-    const [lightSquares, setLightSquares] = useState('')
-    const [darkSquares, setDarkSqares] = useState('')
+    const [lightSquares, setLightSquares] = useState(currentTheme ? currentTheme.light_squares : '')
+    const [darkSquares, setDarkSqares] = useState(currentTheme ? currentTheme.dark_squares : '')
     const [pieceName, setPieceName] = useState('default')
     const [url, setUrl] = useState('')
     const [background, setBackground] = useState('')
@@ -51,7 +51,6 @@ export default function EditThemeForm() {
     const themeChangeHandler = e => {
         setThemeId(e.target.value)
         const theme = themes[e.target.value]
-        console.log("the theme is", { theme })
         dispatch(setTheme(theme))
         setThemeName(theme.theme_name)
         setLightSquares(theme.light_squares)
@@ -59,6 +58,10 @@ export default function EditThemeForm() {
         // setPieceName(theme.pieceName)
         setUrl(theme.url)
         setBackground(theme.background)
+    }
+
+    const lightSquareHandler = e => {
+        setLightSquares(e.target.value)
     }
 
     const handleDeleteClick = e => {
@@ -128,7 +131,7 @@ export default function EditThemeForm() {
                     id='light-squares'
                     type="color"
                     value={lightSquares}
-                    onChange={(e) => setLightSquares(e.target.value)}
+                    onChange={lightSquareHandler}
                     required />
 
                 <label htmlFor='dark-squares'>Choose a dark square color:</label>
